@@ -1,0 +1,31 @@
+https://www.drawio.com/
+
+
+mysql
+
+usuario:
+id
+user 
+password
+avatar
+wallet
+
+productos:
+id
+name
+precio compra
+precio venta
+
+
+compras
+id
+cliente
+producto
+fechas
+
+
+venta
+id
+cliente
+producto
+fechas
