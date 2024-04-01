@@ -43,4 +43,4 @@ Utilizamos las siguientes tecnologias para realizar el desarrollo.
 | Ronan Filloy     | Frontend  | Contacto3       |
 | Diego Cuevas     | Frontend  | Contacto3       |
 | Rogelio Olarte   | Frontend  | Contacto3       |
-| Susan Sandoval   | Frontend  |https://www.linkedin.com/in/mariasusanasandoval/|
+| Susan Sandoval   |    QA     |https://www.linkedin.com/in/mariasusanasandoval/|
