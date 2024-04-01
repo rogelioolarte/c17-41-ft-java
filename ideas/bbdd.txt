@@ -1,31 +1,4 @@
 https://www.drawio.com/
 
+https://trello.com/invite/userworkspace63667658/ATTIb15554626a1aa6ae29af201bc1cbf1bd610DBA02
 
-mysql
-
-usuario:
-id
-user 
-password
-avatar
-wallet
-
-productos:
-id
-name
-precio compra
-precio venta
-
-
-compras
-id
-cliente
-producto
-fechas
-
-
-venta
-id
-cliente
-producto
-fechas
