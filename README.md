@@ -1,7 +1,7 @@
 # Payzo: Billetera Virtual
 
 <p align="center">
-  <img src="https://github.com/GonzaloIvanVallone/c17-41-ft-java/assets/100984091/bbb6a67c-0220-4903-a6a4-514699903bd4" alt="Alt Text">
+  <img src="https://raw.githubusercontent.com/No-Country/c17-41-ft-java/main/payzo.png" alt="Alt Text">
 </p>
 
 ## Sobre Payzo
@@ -42,5 +42,5 @@ Utilizamos las siguientes tecnologias para realizar el desarrollo.
 | Bryan Jacome     | Frontend  | Contacto3       |
 | Ronan Filloy     | Frontend  | Contacto3       |
 | Diego Cuevas     | Frontend  | Contacto3       |
-| Rogelio Olarte   | Frontend  | Contacto3       |
+| Rogelio Olarte   | Frontend  | https://www.linkedin.com/in/rogelio-olarte/ |
 | Susan Sandoval   |    QA     |https://www.linkedin.com/in/mariasusanasandoval/|
