@@ -9,20 +9,23 @@ import RegisterPage from './pages/RegisterPage.jsx'
 import DashboardPage from './pages/DashboardPage.jsx'
 import WalletPage from './pages/WalletPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
+import ErrorPage from './pages/ErrorPage.jsx'
 
 const router = createBrowserRouter([
-  { path:'', element:<App/>,children: [
-    { path:'',  element:<HomePage/> },
-    { path:'dashboard', element:<DashboardPage/> },
-    { path:'wallet', element:<WalletPage/> },
+  { path:'/', Component: App, children: [
+    { path: '/', Component: HomePage, index: true },
+    { path: '/home', Component: HomePage },
+    { path:'/dashboard', Component: DashboardPage },
+    { path:'/wallet', Component: WalletPage },
+    
   ]},
-  { path:'login', element:<LoginPage/> },
-  { path:'register', element:<RegisterPage/> },
-  { path:'*', element:<NotFoundPage/> },
+  { path:'/login', Component: LoginPage },
+  { path:'/register', Component: RegisterPage },
+  { path:'*', Component: NotFoundPage },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} fallbackElement={<ErrorPage />}/>
   </React.StrictMode>,
 )
