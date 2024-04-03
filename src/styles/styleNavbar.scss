@@ -1,28 +1,31 @@
-.navbare {
-    border-bottom: 0.05rem solid #D9D9D9;
+.color-background {
     background-color: white;
+}
+.navbare {
+    @extend .color-background;
+    border-bottom: 0.05rem solid #D9D9D9;
     display: flex;
     justify-content: space-between;
 }
 .logo {
+    @extend .color-background;
     width: 7rem;
-    background-color: white;
     margin-left: 1rem;
 }
 .button-init {
+    @extend .color-background;
     display: flex;
     justify-content: space-between;
     margin-right: 2rem;
-    background-color: white;
+    max-width: 13.5rem;
 }
 .button-nav {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
 }
 .button-init-left {
+    @extend .color-background;
     @extend .button-nav;
-    background-color: white;
-    margin-right: 1rem;
 }
 .button-init-right {
     @extend .button-nav;
