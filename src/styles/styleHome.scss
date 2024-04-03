@@ -1,0 +1,15 @@
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    flex-direction: column;
+}
+.home-title {
+    align-self: center;
+    font-weight: 800;
+    font-size: 85;
+}
+.home-banner {
+    align-self: center;
+}

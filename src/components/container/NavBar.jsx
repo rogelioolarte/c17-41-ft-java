@@ -1,16 +1,15 @@
-import '../../styles/style.scss'
+import '../../styles/styleNavbar.scss'
 import Logo from '../../assets/payzo.svg'
 
 function NavBar() {
   return (
-    <div  className='navbar'>
+    <nav  className='navbare navbar navbar-expand-lg navbar-light'>
       <img className='logo' src={Logo} alt="Logo" />
       <div className='button-init' >
-        <div className='button-init-left'>Log in</div>
-        <div className='button-init-right' >Register</div>
+        <button type="button" className="btn btn-light btn-sm button-init-left ">Log in</button>
+        <button type="button" className="btn btn-info btn-sm button-init-right ">Register</button>
       </div>
-      
-    </div>
+    </nav>
   )
 }
 
