@@ -5,10 +5,10 @@
 }
 
 .login-register-section {
-    width: calc(60% - 3vw);
+    width: calc(45% - 5vw);
     height: 100vh;
     background: white;
-    padding-left: 3vw;
+    padding-left: 5vw;
     & * {
         background: white;
     }
@@ -17,8 +17,7 @@
         hr {
             opacity: 1;
             width: 80%;
-            margin: 0 calc(12.5% - 3vw);
-            border: 1px solid rgb(160, 160, 160);
+            margin: 0 calc(12.5% - 5vw);
         }
     }
 

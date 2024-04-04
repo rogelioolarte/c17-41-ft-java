@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
 import WalletPage from "./pages/WalletPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import RecoverPage from "./pages/RecoverPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/wallet" Component={WalletPage} />
           <Route path="/login" Component={LoginPage} />
           <Route path="/register" Component={RegisterPage} />
+          <Route path="/recover" Component={RecoverPage} />
           <Route path="*" Component={NotFoundPage} />
         </Routes>
       </BrowserRouter>
