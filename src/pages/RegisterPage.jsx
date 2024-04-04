@@ -1,7 +1,11 @@
+import RegisterFormik from "../components/pure/forms/registerFormik";
+
 function RegisterPage() {
   return (
-    <div>RegisterPage</div>
-  )
+    <div>
+      <RegisterFormik />
+    </div>
+  );
 }
 
-export default RegisterPage
+export default RegisterPage;
