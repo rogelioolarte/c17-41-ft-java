@@ -6,7 +6,8 @@
 }
 
 .login-register-section {
-    width: 30rem;
+    width: calc(45% - 3rem);
+    height: 85vh;
     background: white;
     padding-left: 3rem;
     font-size: 0.7rem;
@@ -28,7 +29,7 @@
 
     .big-title {
         width: 17rem;
-        margin-bottom: 3rem;
+        margin-bottom: 1.5rem;
         font-size: 3rem;
     }
 
@@ -65,7 +66,7 @@
     .login-register-field {
         @include formElements(80%, 0.8rem);
         display: block;
-        border: 0.008rem solid #3F3D3D;
+        border: 1px solid #3F3D3D;
     }
 
     .login-field {
@@ -82,41 +83,39 @@
     }
 
     .login-register-button {
-        @include formElements(14rem, 0.1rem 0.5rem);
+        @include formElements(14rem, 0.2rem 0.5rem);
         background: #02BAF2;
         color: white;
         font-size: 0.9rem;
         cursor: pointer;
-        height: 1.7rem;
-        margin-top: 1rem;
         margin-bottom: 0.2rem;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         transition: 0.3s ease;
+        border-radius: 0.2rem;
+        border: none;
         i{
             background: none;
             color: white;
             text-align: end;
-            padding-top: 0.2rem;
         }
     }
 
     .login-big-button {
-        height: 2.5rem;
+        @extend .login-register-button;
         font-size: 1.3rem;
         font-weight: 300;
-        padding-top: 0.08rem;
-        border-radius: 0.2rem;
     }
 
     .login-register-button:hover {
         transform: translateY(-2px);
+        box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.6);
     }
 
     .navigation-link {
         font-size: 0.5 rem;
         font-weight: 200;
-        margin-bottom: 1rem;
         a {
             color: #02BAF2;
             text-decoration: none;

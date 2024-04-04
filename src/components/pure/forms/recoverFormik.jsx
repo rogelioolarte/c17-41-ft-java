@@ -1,15 +1,10 @@
 import { Formik, Field, Form } from "formik";
-import Logo from "../../../assets/payzo.svg";
 import { NavLink } from "react-router-dom";
 import "../../../styles/recoverAccount.scss";
 
 const RecoverFormik = () => {
   return (
     <section className="recover-section">
-      <nav className="recover-nav">
-        <img src={Logo} />
-        <hr />
-      </nav>
       <Formik initialValues={{ email: "" }}>
         <Form className="recover-form">
           <h1>Reset your password</h1>

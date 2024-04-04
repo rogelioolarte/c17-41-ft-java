@@ -1,28 +1,38 @@
 import { Formik, Field, Form } from "formik";
 import { NavLink } from "react-router-dom";
-/* import Logo from "../../../assets/payzo.svg"; */
 import "../../../styles/loginRegisterForms.scss";
 
 const LoginFormik = () => {
   return (
     <section className="login-register-section">
-      {/* <nav className="login-register-nav"><img src={Logo} /></nav> */}
       <Formik initialValues={{ email: "", password: "" }}>
         <Form className="login-register-form">
-          <h1 className="login-register-title big-title" >Sign in with Payzo</h1>
+          <h1 className="login-register-title big-title">Log in to Payzo</h1>
           <div className="login-register-input big-label">
             <label htmlFor="email">Email</label>
-            <Field type="email" id="email" name="email" 
-              placeholder="Example@mail.com" className="login-register-field login-field" autoFocus />
+            <Field
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Example@mail.com"
+              className="login-register-field login-field"
+              autoFocus
+            />
           </div>
           <div className="login-register-input big-label">
             <label htmlFor="password">Password</label>
-            <Field type="password" id="password" name="password" className="login-register-field login-field" />
+            <Field
+              type="password"
+              id="password"
+              name="password"
+              className="login-register-field login-field"
+            />
             <p className="navigation-link">
-              Forgot your password? <NavLink to={"/recover"}>Click here</NavLink>
+              Forgot your password?{" "}
+              <NavLink to={"/recover"}>Click here</NavLink>
             </p>
           </div>
-          <button className="login-register-button login-big-button" type="submit">
+          <button className="login-big-button" type="submit">
             Sign in! <i className="fas fa-chevron-right" />
           </button>
         </Form>

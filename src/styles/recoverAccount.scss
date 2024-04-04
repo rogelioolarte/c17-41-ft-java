@@ -1,6 +1,6 @@
 .recover-section {
     width: calc(45% - 5vw);
-    height: 100vh;
+    height: 90vh;
     background: white;
     padding-left: 5vw;
 
@@ -12,14 +12,7 @@
         font-size: 2rem;
         color: #02BAF2;
         margin-bottom: 2vh;
-    }
-
-    hr {
-        width: 80%;
-        margin: 0 calc(12.5% - 5vw);
-        margin-bottom: 5vh;
-        border: 1px solid rgb(160, 160, 160);
-        opacity: 1;
+        padding-top: 8vh;
     }
 
     .recover-form {
