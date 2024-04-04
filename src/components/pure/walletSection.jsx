@@ -1,15 +1,7 @@
 const WalletSection = () => {
-    return (
-        <div>
-            walletSection
-        </div>
-    );
+  return <div>walletSection</div>;
 };
 
-
-WalletSection.propTypes = {
-
-};
-
+WalletSection.propTypes = {};
 
 export default WalletSection;
