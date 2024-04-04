@@ -1,16 +1,24 @@
 @mixin formElements($width, $padding) {
     width: $width;
     padding: $padding;
-    border-radius: 3px;
+    border-radius: 0.15rem;
+    margin-bottom: 1rem;
 }
 
 .login-register-section {
-    width: calc(45% - 5vw);
-    height: 100vh;
+    width: 30rem;
     background: white;
-    padding-left: 5vw;
+    padding-left: 3rem;
+    font-size: 0.7rem;
+    margin-right: 10rem;
     & * {
         background: white;
+    }
+
+    .login-register-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 900;
     }
 
     .login-register-nav {
@@ -48,43 +56,45 @@
         @include formElements(80%, 0.8rem);
         display: block;
         font-size: 1.1rem;
-        border: 1px solid black;
+        border: 0.008rem solid #3F3D3D;
     }
 
     .register-field {
         @extend .login-register-field;
         @include formElements(80%, 0.3rem);
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+        width: 14rem;
+        height: 1.8rem;
+        margin-bottom: 1rem;
     }
 
     .login-register-button {
-        @include formElements(60%, 0.5rem 0.8rem);
-        text-align: start;
-        border: none;
+        @include formElements(14rem, 0.1rem 0.5rem);
         background: #02BAF2;
         color: white;
-        font-size: 1rem;
+        font-size: 0.9rem;
         cursor: pointer;
-        margin-bottom: 2vh;
+        height: 1.7rem;
+        margin-bottom: 0.2rem;
+        display: flex;
+        justify-content: space-between;
         transition: 0.3s ease;
-
         i{
             background: none;
             color: white;
-            width: 75%;
             text-align: end;
+            padding-top: 0.2rem;
         }
     }
 
     .login-register-button:hover {
-        box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.4);
-        transform: translateY(-3px);
+        transform: translateY(-2px);
     }
 
     .navigation-link {
         font-size: 0.5 rem;
         font-weight: 200;
-        margin-bottom: 1vh;
+        margin-bottom: 1rem;
 
         a {
             color: #02BAF2;

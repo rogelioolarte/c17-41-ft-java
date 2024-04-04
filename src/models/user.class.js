@@ -1,5 +1,5 @@
 export class User {
-    name = '';
+    firstName = '';
     lastName = '';
     dni = '';
     email = '';
@@ -17,8 +17,8 @@ export class User {
      * @param {*} urlAvatar Url of the image for the avatar
      * @param {*} dollarAccount Amount of the dollars in the account
      */
-    constructor(name, lastName, dni, email, password, urlAvatar, dollarAccount){
-        this.name = name;
+    constructor(firstName, lastName, dni, email, password, urlAvatar, dollarAccount){
+        this.firstName = firstName;
         this.lastName = lastName;
         this.dni = dni;
         this.email = email;
