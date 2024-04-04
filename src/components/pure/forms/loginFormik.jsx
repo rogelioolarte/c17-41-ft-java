@@ -45,7 +45,7 @@ const LoginFormik = () => {
         </p>
         <p className="navigation-link">
           Don`&apos;`t have an account yet?
-          <NavLink to={"/register"}>Register now!</NavLink>
+          <NavLink to={"/register"}> Register now!</NavLink>
         </p>
       </div>
     </section>
