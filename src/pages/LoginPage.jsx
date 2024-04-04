@@ -1,8 +1,10 @@
 import LoginFormik from "../components/pure/forms/loginFormik";
 
 function LoginPage() {
+
+
   return (
-    <div>
+    <div >
       <LoginFormik />
     </div>
   );

@@ -18,7 +18,18 @@
     .login-register-title {
         font-size: 2.5rem;
         margin-bottom: 1rem;
-        font-weight: 900;
+        font-weight: 900;   
+    }
+
+    .big-label {
+        font-size: 1.1rem;
+        font-weight: 300;
+    }
+
+    .big-title {
+        width: 17rem;
+        margin-bottom: 3rem;
+        font-size: 3rem;
     }
 
     .login-register-nav {
@@ -36,7 +47,7 @@
     }
 
     .login-register-form {
-        height: 70%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -45,7 +56,6 @@
 
     .register-form {
         @extend .login-register-form;
-        height: 100%;
     }
 
     .login-register-input {
@@ -55,8 +65,11 @@
     .login-register-field {
         @include formElements(80%, 0.8rem);
         display: block;
-        font-size: 1.1rem;
         border: 0.008rem solid #3F3D3D;
+    }
+
+    .login-field {
+        height: 2.55rem;
     }
 
     .register-field {
@@ -75,6 +88,7 @@
         font-size: 0.9rem;
         cursor: pointer;
         height: 1.7rem;
+        margin-top: 1rem;
         margin-bottom: 0.2rem;
         display: flex;
         justify-content: space-between;
@@ -87,6 +101,14 @@
         }
     }
 
+    .login-big-button {
+        height: 2.5rem;
+        font-size: 1.3rem;
+        font-weight: 300;
+        padding-top: 0.08rem;
+        border-radius: 0.2rem;
+    }
+
     .login-register-button:hover {
         transform: translateY(-2px);
     }
@@ -95,11 +117,14 @@
         font-size: 0.5 rem;
         font-weight: 200;
         margin-bottom: 1rem;
-
         a {
             color: #02BAF2;
             text-decoration: none;
         }
+    }
+
+    .big-link {
+        font-size: 0.9rem;
     }
 
 }

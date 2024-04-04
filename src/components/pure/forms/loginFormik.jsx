@@ -1,57 +1,40 @@
 import { Formik, Field, Form } from "formik";
 import { NavLink } from "react-router-dom";
-import Logo from "../../../assets/payzo.svg";
+/* import Logo from "../../../assets/payzo.svg"; */
 import "../../../styles/loginRegisterForms.scss";
 
 const LoginFormik = () => {
   return (
     <section className="login-register-section">
-      <nav className="login-register-nav">
-        <img src={Logo} />
-        <hr />
-      </nav>
+      {/* <nav className="login-register-nav"><img src={Logo} /></nav> */}
       <Formik initialValues={{ email: "", password: "" }}>
         <Form className="login-register-form">
-          <h1>Sign in to Payzo</h1>
-          <div className="login-register-input">
-            <label htmlFor="email">Email: </label>
-            <Field
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Example@mail.com"
-              className="login-register-field"
-              autoFocus
-            />
+          <h1 className="login-register-title big-title" >Sign in with Payzo</h1>
+          <div className="login-register-input big-label">
+            <label htmlFor="email">Email</label>
+            <Field type="email" id="email" name="email" 
+              placeholder="Example@mail.com" className="login-register-field login-field" autoFocus />
           </div>
-          <div className="login-register-input">
-            <label htmlFor="password">Password: </label>
-            <Field
-              type="password"
-              id="password"
-              name="password"
-              className="login-register-field"
-            />
+          <div className="login-register-input big-label">
+            <label htmlFor="password">Password</label>
+            <Field type="password" id="password" name="password" className="login-register-field login-field" />
+            <p className="navigation-link">
+              Forgot your password? <NavLink to={"/recover"}>Click here</NavLink>
+            </p>
           </div>
-          <button className="login-register-button" type="submit">
-            Sign in!
-            <i className="fas fa-chevron-right" />
+          <button className="login-register-button login-big-button" type="submit">
+            Sign in! <i className="fas fa-chevron-right" />
           </button>
         </Form>
       </Formik>
       <div>
-        <p className="navigation-link">
-          Forgot your password? <NavLink to={"/recover"}>Click here</NavLink>
-        </p>
-        <p className="navigation-link">
-          Don`&apos;`t have an account yet?
+        <p className="navigation-link big-link">
+          Don`t have an account yet?
           <NavLink to={"/register"}> Register now!</NavLink>
         </p>
       </div>
     </section>
   );
 };
-
-LoginFormik.propTypes = {};
 
 export default LoginFormik;
