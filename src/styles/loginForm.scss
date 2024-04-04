@@ -6,11 +6,20 @@
 
 .login-section {
     width: calc(50% - 3vw);
-    height: 85vh;
+    height: 100vh;
     background: white;
     padding-left: 3vw;
     & * {
         background: white;
+    }
+
+    .login-nav {
+        hr {
+            opacity: 1;
+            width: 80%;
+            margin: 0 calc(12.5% - 3vw);
+            border: 1px solid rgb(160, 160, 160);
+        }
     }
 
     h1 {
@@ -48,6 +57,7 @@
         cursor: pointer;
         margin-bottom: 2vh;
         transition: 0.3s ease;
+
         i{
             background: none;
             color: white;
@@ -65,6 +75,7 @@
         font-size: 0.5 rem;
         font-weight: 200;
         margin-bottom: 1vh;
+
         a {
             color: #02BAF2;
             text-decoration: none;

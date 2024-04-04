@@ -1,10 +1,15 @@
 import { Formik, Field, Form } from "formik";
 import { NavLink } from "react-router-dom";
+import Logo from "../../../assets/payzo.svg";
 import "../../../styles/loginForm.scss";
 
 const LoginFormik = () => {
   return (
     <section className="login-section">
+      <nav className="login-nav">
+        <img src={Logo} />
+        <hr />
+      </nav>
       <Formik initialValues={{ email: "", password: "" }}>
         <Form className="login-form">
           <h1>Sign in to Payzo</h1>
