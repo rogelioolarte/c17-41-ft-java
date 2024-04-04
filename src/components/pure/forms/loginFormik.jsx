@@ -44,7 +44,7 @@ const LoginFormik = () => {
           Forgot your password? <NavLink to={"/"}>Click here</NavLink>
         </p>
         <p className="navigation-link">
-          Don't have an account yet?{" "}
+          Don`&apos;`t have an account yet?
           <NavLink to={"/register"}>Register now!</NavLink>
         </p>
       </div>
