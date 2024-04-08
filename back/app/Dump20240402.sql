@@ -18,6 +18,9 @@
 --
 -- Table structure for table `products`
 --
+DROP DATABASE if EXISTS  playzo;
+CREATE DATABASE playzo CHARACTER SET utf8 COLLATE UTF8_GENERAL_CI;
+USE playzo;
 
 DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
