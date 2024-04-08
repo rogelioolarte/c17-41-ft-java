@@ -17,12 +17,12 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" Component={HomePage} />
-          <Route path="/dashboard" Component={DashboardPage} />
-          <Route path="/wallet" Component={WalletPage} />
-          <Route path="/login" Component={LoginPage} />
-          <Route path="/register" Component={RegisterPage} />
-          <Route path="/recover" Component={RecoverPage} />
+          <Route path="home" Component={HomePage} />
+          <Route path="dashboard" Component={DashboardPage} />
+          <Route path="wallet" Component={WalletPage} />
+          <Route path="login" Component={LoginPage} />
+          <Route path="register" Component={RegisterPage} />
+          <Route path="recover" Component={RecoverPage} />
           <Route path="*" Component={NotFoundPage} />
         </Routes>
       </BrowserRouter>
