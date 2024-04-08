@@ -4,7 +4,7 @@ const ConfigUserPage = () => {
     return (
         <div>
         ConfigUserPage
-         <ConfigSection></ConfigSection>
+        <ConfigSection></ConfigSection>
         </div>
     );
 }

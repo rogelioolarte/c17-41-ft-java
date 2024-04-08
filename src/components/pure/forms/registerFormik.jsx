@@ -1,6 +1,6 @@
 import { Formik, Field, Form } from "formik";
-import { NavLink } from "react-router-dom";
-/* import Logo from "../../../assets/payzo.svg"; */
+import { Link, NavLink } from "react-router-dom";
+import Logo from "../../../assets/payzo.svg";
 import "../../../styles/loginRegisterForms.scss";
 
 const RegisterFormik = () => {
@@ -13,9 +13,11 @@ const RegisterFormik = () => {
 
   return (
     <section className="login-register-section">
-      {/* <nav className="login-register-nav">
+      <nav className="login-register-nav">
+      <Link to="/home">
         <img src={Logo} />
-      </nav> */}
+      </Link>
+      </nav>
       <Formik initialValues={ initialValues } >
         <Form className="register-form">
           <h1 className="login-register-title">Create an account</h1>

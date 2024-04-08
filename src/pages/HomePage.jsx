@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import '../styles/styleHome.scss'
-const HomePagePage = () => {
+const HomePage = () => {
   return (
     <div className="home">
       <h1  className="home-title">Trade Bitcoin with PAYZO</h1> 
@@ -21,4 +21,4 @@ const HomePagePage = () => {
   );
 };
 
-export default HomePagePage;
+export default HomePage;
