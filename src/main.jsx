@@ -13,8 +13,8 @@ import App from './App.jsx'
 
 const router = createBrowserRouter([
   { path: "/", element: <App/>, children: [
-    { path: "/", element: <Navigate to="/home" /> },
-    { path: "/home", element: <HomePage/> },
+    { path: "/home", element: <Navigate to="/" /> },
+    { path: "/", element: <HomePage/> },
     { path: "/dashboard", element: <DashboardPage/> },
     { path: "/wallet", element: <WalletPage/> },
   ] },
