@@ -16,36 +16,56 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `products`
+-- Table structure for table `currency`
 --
-DROP DATABASE if EXISTS  playzo;
-CREATE DATABASE playzo CHARACTER SET utf8 COLLATE UTF8_GENERAL_CI;
-USE playzo;
 
-DROP TABLE IF EXISTS `products`;
+DROP TABLE IF EXISTS `currency`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `products` (
-  `product_id` int NOT NULL AUTO_INCREMENT,
-  `product_name` varchar(45) NOT NULL,
-  `product_type` enum('crypto','stock') NOT NULL,
-  `current_price` decimal(18,2) NOT NULL,
-  `previous_price` decimal(18,2) NOT NULL,
-  `last_update` date NOT NULL,
-  `active` tinyint NOT NULL,
-  PRIMARY KEY (`product_id`),
-  UNIQUE KEY `product_id_UNIQUE` (`product_id`),
-  UNIQUE KEY `name_UNIQUE` (`product_name`)
+CREATE TABLE `currency` (
+  `crypto_id` bigint NOT NULL,
+  `product_name` varchar(255) DEFAULT NULL,
+  `symbol` varchar(255) DEFAULT NULL,
+  `product_type` tinyint DEFAULT NULL,
+  `current_price` double(10,2) DEFAULT NULL,
+  `previous_price` double(10,2) DEFAULT NULL,
+  `last_update` datetime DEFAULT NULL,
+  `active` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`crypto_id`),
+  CONSTRAINT `currency_chk_1` CHECK ((`product_type` between 0 and 1))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `products`
+-- Dumping data for table `currency`
 --
 
-LOCK TABLES `products` WRITE;
-/*!40000 ALTER TABLE `products` DISABLE KEYS */;
-/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+LOCK TABLES `currency` WRITE;
+/*!40000 ALTER TABLE `currency` DISABLE KEYS */;
+INSERT INTO `currency` VALUES (102,'Bitcoin','BTC',0,72089.66,44695.59,'2024-04-08 07:41:02',_binary ''),(103,'Ethereum','ETH',0,3623.80,2609.14,'2024-04-08 07:41:02',_binary ''),(104,'Tether','USDT',0,1.00,0.96,'2024-04-08 07:41:02',_binary ''),(105,'Binance Coin','BNB',0,597.52,322.66,'2024-04-08 07:41:02',_binary ''),(106,'Solana','SOL',0,183.16,87.92,'2024-04-08 07:41:02',_binary ''),(107,'Staked Ether','STETH',0,3614.91,2602.74,'2024-04-08 07:41:02',_binary ''),(108,'Dogecoin','DOGE',0,0.21,0.13,'2024-04-08 07:41:02',_binary ''),(109,'USD Coin','USDC',0,1.00,0.99,'2024-04-08 07:41:02',_binary ''),(110,'XRP','XRP',0,0.61,0.57,'2024-04-08 07:41:02',_binary ''),(111,'Cardano','ADA',0,0.61,0.51,'2024-04-08 07:41:02',_binary ''),(112,'TON Coin','TON',0,5.84,-7.71,'2024-04-08 07:41:02',_binary ''),(113,'Avalanche','AVAX',0,50.74,-3.55,'2024-04-08 07:41:02',_binary ''),(114,'Shiba Inu','SHIB',0,0.00,0.00,'2024-04-08 07:41:02',_binary ''),(115,'Bitcoin Cash','BCH',0,706.57,49.46,'2024-04-08 07:41:02',_binary ''),(116,'Polkadot','DOT',0,8.97,6.19,'2024-04-08 07:41:02',_binary '');
+/*!40000 ALTER TABLE `currency` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `currency_seq`
+--
+
+DROP TABLE IF EXISTS `currency_seq`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `currency_seq` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `currency_seq`
+--
+
+LOCK TABLES `currency_seq` WRITE;
+/*!40000 ALTER TABLE `currency_seq` DISABLE KEYS */;
+INSERT INTO `currency_seq` VALUES (201);
+/*!40000 ALTER TABLE `currency_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -67,8 +87,6 @@ CREATE TABLE `transactions` (
   PRIMARY KEY (`transaction_id`),
   UNIQUE KEY `transaction_id_UNIQUE` (`transaction_id`),
   KEY `user_id_idx` (`user_id`),
-  KEY `product_id_idx` (`product_id`),
-  CONSTRAINT `product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -128,4 +146,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-02 10:40:50
+-- Dump completed on 2024-04-08 14:34:30
