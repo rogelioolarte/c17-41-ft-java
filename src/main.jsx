@@ -15,7 +15,7 @@ const router = createBrowserRouter([
   { path: "/", element: <App/>, children: [
     { path: "/home", element: <Navigate to="/" /> },
     { path: "/", element: <HomePage/> },
-    { path: "/dashboard", element: <DashboardPage/> },
+    { path: "/dashboard", element: <DashboardPage/>},
     { path: "/wallet", element: <WalletPage/> },
   ] },
   { path: "/login", element: <LoginPage/> },
@@ -25,5 +25,5 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}  />,
+  <RouterProvider router={router} />,
 )

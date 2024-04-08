@@ -1,4 +1,4 @@
-import LoginFormik from "../components/pure/forms/loginFormik";
+import LoginFormik from "../components/pure/forms/LoginFormik";
 
 function LoginPage() {
 

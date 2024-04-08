@@ -1,7 +1,9 @@
+import '../../styles/styleDasboardSection.scss'
+
 const DashboardSection = () => {
     return (
-        <div>
-            dashboardSection
+        <div className='dashboard-section-init' >
+            hola
         </div>
     );
 };

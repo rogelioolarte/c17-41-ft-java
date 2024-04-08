@@ -1,4 +1,4 @@
-import ConfigFormik from "./forms/configFormik"
+import ConfigFormik from "./forms/ConfigFormik"
 
 function ConfigSection() {
   return (

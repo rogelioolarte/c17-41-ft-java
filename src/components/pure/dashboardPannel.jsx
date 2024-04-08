@@ -1,6 +1,8 @@
+import '../../styles/styleDashboardPannel.scss'
+
 const DashboardPannel = () => {
     return (
-        <div>
+        <div className='dashboard-pannel-init' >
             dashboardPannel
         </div>
     );
