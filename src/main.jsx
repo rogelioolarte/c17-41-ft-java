@@ -1,4 +1,3 @@
-
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
@@ -12,7 +11,6 @@ import RecoverPage from './pages/RecoverPage.jsx'
 import WalletPage from './pages/WalletPage.jsx'
 import ShowHistory from './components/pure/ShowHistory.jsx'
 import CreateOffer from './components/pure/forms/CreateOffer.jsx'
-
 
 const router = createBrowserRouter([
   { path: "/", element: <App/>, children: [
