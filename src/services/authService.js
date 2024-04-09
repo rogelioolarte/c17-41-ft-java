@@ -6,8 +6,8 @@ const login = async (email, password, navigateToErrorPage) => {
       email: email,
       password: password,
     });
-    console.log(user);
-    return user;
+    sessionStorage.setItem('token', user.data.token)
+    return true;
   } catch (error) {
     navigateToErrorPage(error.message);
     throw error;
