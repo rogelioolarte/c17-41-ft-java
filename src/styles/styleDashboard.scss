@@ -3,16 +3,18 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 80vh;
+    align-content: center;
+    padding: 1%;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 /* Dashboard Panel */
 .dashboard-pannel-init {
     background-color: white;
-    height: 15rem; 
-    width: 25rem;
-    margin-left: 5rem;
-    margin-top: -5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,11 +27,8 @@
 
 /* Dashboard Section */
 .dashboard-section-init {
-    background-color: white;
-    height: 30rem;
-    width: 50rem;
-    margin-right: 5rem;
-    margin-top: 5rem;
+    height: 90vh;
+    width: 55%;
     * {
         background-color: white;
     }
@@ -58,10 +57,8 @@
 
 .submit-button-init {
     background-color: #02BAF2;
-    display: flex;
-    justify-content: center;
-    margin-left: 22rem;
     margin-top: 2rem;
+    align-self: center;
 }
 
 .icon-init {

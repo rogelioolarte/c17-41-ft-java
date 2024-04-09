@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 function NavBar() {
   return (
     <nav  className='navbare navbar navbar-expand-lg navbar-light'>
-      <NavLink to="/"  replace={true} >
+      <NavLink to="/"  replace={true} className="color-background" >
         <img className='logo' src={Logo} alt="Logo" />
       </NavLink>
       <div className='button-init' >
