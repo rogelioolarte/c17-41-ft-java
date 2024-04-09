@@ -3,8 +3,8 @@ import ConfigFormik from "./forms/ConfigFormik"
 function ConfigSection() {
   return (
     <div>
-        configSection
-        <ConfigFormik></ConfigFormik>
+        ConfigSection
+        <ConfigFormik/>
     </div>
   )
 }

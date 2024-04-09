@@ -9,10 +9,8 @@ const DashboardSection = () => {
     );
 };
 
-
 DashboardSection.propTypes = {
 
 };
-
 
 export default DashboardSection;

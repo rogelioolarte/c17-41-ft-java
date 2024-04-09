@@ -1,4 +1,5 @@
-import ConfigSection from "../components/pure/configSection";
+import ConfigSection from "../components/pure/ConfigSection";
+
 
 const ConfigUserPage = () => {
     return (

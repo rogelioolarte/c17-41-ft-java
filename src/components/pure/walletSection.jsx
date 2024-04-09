@@ -1,7 +1,7 @@
-const WalletSection = () => {
-  return <div>walletSection</div>;
-};
+function WalletSection() {
+  return (
+    <div>WalletSection</div>
+  )
+}
 
-WalletSection.propTypes = {};
-
-export default WalletSection;
+export default WalletSection
