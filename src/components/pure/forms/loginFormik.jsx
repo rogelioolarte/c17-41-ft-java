@@ -4,52 +4,52 @@ import "../../../styles/loginRegisterForms.scss";
 import Logo from "../../../assets/payzo.svg";
 
 const LoginFormik = () => {
-  return (
+    return (
     <section className="login-register-section">
-      <Link to="/home">
+        <Link to="/home">
         <img src={Logo} />
-      </Link>
-      <Formik initialValues={{ email: "", password: "" }}>
+        </Link>
+        <Formik initialValues={{ email: "", password: "" }}>
         <Form className="login-register-form">
-          <h1 className="login-register-title big-title">Log in to Payzo</h1>
-          <div className="login-register-input big-label">
+            <h1 className="login-register-title big-title">Log in to Payzo</h1>
+            <div className="login-register-input big-label">
             <label htmlFor="email">Email</label>
             <Field
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Example@mail.com"
-              className="login-register-field login-field"
-              autoFocus
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Example@mail.com"
+                className="login-register-field login-field"
+                autoFocus
             />
-          </div>
-          <div className="login-register-input big-label">
+            </div>
+            <div className="login-register-input big-label">
             <label htmlFor="password">Password</label>
             <Field
-              type="password"
-              id="password"
-              name="password"
-              className="login-register-field login-field"
+                type="password"
+                id="password"
+                name="password"
+                className="login-register-field login-field"
             />
             <p className="navigation-link">
-              Forgot your password?{" "}
-              <NavLink to={"/recover"}>Click here</NavLink>
+                Forgot your password?{" "}
+                <NavLink to={"/recover"}>Click here</NavLink>
             </p>
-          </div>
-          <button className="login-big-button" type="submit">
+            </div>
+            <button className="login-big-button" type="submit">
             Sign in! <i className="fas fa-chevron-right" />
-          </button>
+            </button>
         </Form>
-      </Formik>
-      <div>
+        </Formik>
+        <div>
         <p className="navigation-link big-link">
-          Don`t have an account yet?
-          <NavLink to={"/register"}> Register now!</NavLink>
-          <Link to="/dashboard" > ---Dashboard--- </Link>
+            Don`t have an account yet?
+            <NavLink to={"/register"}> Register now!</NavLink>
+            <Link to="/dashboard" > ---Dashboard--- </Link>
         </p>
-      </div>
+        </div>
     </section>
-  );
+    );
 };
 
 export default LoginFormik;
