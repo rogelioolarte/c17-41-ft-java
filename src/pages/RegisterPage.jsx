@@ -1,6 +1,5 @@
 import RegisterFormik from "../components/pure/forms/RegisterFormik";
 
-
 function RegisterPage() {
   return (
     <div>
