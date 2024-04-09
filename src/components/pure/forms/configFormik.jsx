@@ -1,5 +1,5 @@
 const ConfigFormik = () => {
-  return <div></div>;
+  return <div>ConfigFormik</div>;
 };
 
 ConfigFormik.propTypes = {};
