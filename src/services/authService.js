@@ -6,7 +6,6 @@ const login = async (email, password, navigateToErrorPage) => {
       email: email,
       password: password,
     });
-    console.log(user);
     return user;
   } catch (error) {
     navigateToErrorPage(error.message);

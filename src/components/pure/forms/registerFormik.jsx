@@ -33,7 +33,7 @@ const RegisterFormik = () => {
   };
 
   const handleSubmit = async () => {
-    await register(
+    const newUser = await register(
       firstName,
       lastName,
       idPassport,
@@ -42,6 +42,7 @@ const RegisterFormik = () => {
       account,
       navigateToErrorPage
     );
+    if (newUser) navigate("/dashboard");
   };
 
   return (

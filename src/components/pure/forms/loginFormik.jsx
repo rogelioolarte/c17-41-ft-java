@@ -20,7 +20,8 @@ const LoginFormik = () => {
   };
 
   const handleSubmit = async () => {
-    await login(email, password, navigateToErrorPage);
+    const user = await login(email, password, navigateToErrorPage);
+    if (user) navigate("/dashboard");
   };
 
   return (
