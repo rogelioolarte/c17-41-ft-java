@@ -1,4 +1,4 @@
-import RegisterFormik from "../components/pure/forms/RegisterFormik";
+import RegisterFormik from "../components/pure/forms/registerFormik";
 
 function RegisterPage() {
   return (
