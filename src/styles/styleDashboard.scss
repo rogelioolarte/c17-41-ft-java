@@ -1,38 +1,53 @@
 /* Dashboard Page */
 .dashboard-init {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    height: 80vh;
+    align-content: center;
+    padding: 2%;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 /* Dashboard Panel */
 .dashboard-pannel-init {
     background-color: white;
-    height: 15rem; 
-    width: 25rem;
-    margin-left: 5rem;
-    margin-top: -5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+<<<<<<< HEAD
     margin-right: 5vw;
+=======
+    padding: 2%;
+>>>>>>> a197693ac20e5541cca8a4a7e51a4a7ff8a59c26
 }
 .dashboard-button-init {
-    margin: 1rem;
+    margin-top: 5%;
+    margin-bottom: 5%;
     background-color: white;
+    font-size: 1rem;
 }
 
 /* Dashboard Section */
 .dashboard-section-init {
-    background-color: white;
-    height: 30rem;
-    width: 50rem;
-    margin-right: 5rem;
-    margin-top: 5rem;
+    height: 75vh;
+    width: 60%;
+    
     * {
         background-color: white;
+    }
+    .forms-adjust-init {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .forms-area-init {
+        margin-left: 10%;
     }
 }
 .title-create-offer {
@@ -46,29 +61,23 @@
     font-size: 3rem;
     text-decoration: underline;
 }
-.label-init {
-    margin-left: 5rem;
-    margin-bottom: 2rem;
-}
-
 .title-form-init {
-    margin-left: 5rem;
     font-weight: 300;
     font-size: 2rem;
+    margin-bottom: 1.5%;
+    margin-top: 3%;
 }
-
 .submit-button-init {
     background-color: #02BAF2;
-    display: flex;
-    justify-content: center;
-    margin-left: 22rem;
-    margin-top: 2rem;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 3%;
+    margin-left: 35%;
 }
-
 .icon-init {
     margin-right: 0.5rem;
 }
 .icon-arrow {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
