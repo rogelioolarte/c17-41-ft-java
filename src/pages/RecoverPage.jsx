@@ -1,4 +1,4 @@
-import RecoverFormik from "../components/pure/forms/recoverFormik";
+import RecoverFormik from "../components/pure/forms/RecoverFormik";
 
 function RecoverPage() {
   return <RecoverFormik />;

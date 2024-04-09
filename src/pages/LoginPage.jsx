@@ -1,13 +1,9 @@
-import LoginFormik from "../components/pure/forms/loginFormik";
+import LoginFormik from "../components/pure/forms/LoginFormik"
 
 function LoginPage() {
-
-
   return (
-    <div >
-      <LoginFormik />
-    </div>
-  );
+    <div><LoginFormik/></div>
+  )
 }
 
-export default LoginPage;
+export default LoginPage

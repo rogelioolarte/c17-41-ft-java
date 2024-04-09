@@ -1,10 +1,11 @@
-import ConfigSection from "../components/pure/configSection";
+import ConfigSection from "../components/pure/ConfigSection";
+
 
 const ConfigUserPage = () => {
     return (
         <div>
         ConfigUserPage
-         <ConfigSection></ConfigSection>
+        <ConfigSection></ConfigSection>
         </div>
     );
 }

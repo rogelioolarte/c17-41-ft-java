@@ -1,7 +1,7 @@
-const ConfigFormik = () => {
-  return <div></div>;
-};
+function ConfigFormik() {
+  return (
+    <div>ConfigFormik</div>
+  )
+}
 
-ConfigFormik.propTypes = {};
-
-export default ConfigFormik;
+export default ConfigFormik
