@@ -32,6 +32,8 @@ public class Currency {
     @Column(name = "active")
     private Boolean active;
 
+
+
     public enum ProductType{
         crypto,
         stock
