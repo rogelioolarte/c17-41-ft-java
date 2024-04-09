@@ -3,9 +3,9 @@ import * as Yup from 'yup';
 import { LIST_PRODUCTS } from "../../../mocks/products.mocks";
 import ArrowLeftRight from '../ArrowLeftRight';
 import '../../../styles/styleDashboard.scss'
-import { obtainProduct } from '../../../services/dashboardService';
+import { obtainProduct, sendOffer } from '../../../services/dashboardService';
 
-let products = obtainProduct() != true ? obtainProduct() : [];
+const products = obtainProduct() != true ? obtainProduct() : [];
 const listOfCurrencies = products != [] ? LIST_PRODUCTS : products;
 
 
@@ -20,6 +20,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const calculateCrypto = (amount, typeCurrency) => {
+    console.log(products)
     return  listOfCurrencies != [] ? 
         JSON.stringify(listOfCurrencies
             .find(value => value.name == typeCurrency).price) * amount
@@ -31,8 +32,12 @@ function CreateOffer() {
     // Función para enviar el formulario
     const handleSubmit = (values, { setSubmitting }) => {
         // Aquí puedes manejar la lógica de envío del formulario
+        if(sendOffer(JSON.stringify(values))){
+            alert('Request send correctly')
+        }
         alert(JSON.stringify(values));
         setSubmitting(false);
+        
     };
 
     return (
