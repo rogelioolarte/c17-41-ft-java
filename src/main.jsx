@@ -10,8 +10,8 @@ import HomePage from './pages/HomePage.jsx'
 import DashboardPage from './pages/DashboardPage.jsx'
 import RecoverPage from './pages/RecoverPage.jsx'
 import WalletPage from './pages/WalletPage.jsx'
-import CreateOffer from './components/pure/forms/createOffer.jsx'
 import ShowHistory from './components/pure/ShowHistory.jsx'
+import CreateOffer from './components/pure/forms/CreateOffer.jsx'
 
 
 const router = createBrowserRouter([
