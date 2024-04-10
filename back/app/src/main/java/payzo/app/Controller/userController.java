@@ -9,6 +9,7 @@ import payzo.app.Model.User;
 import payzo.app.Repository.impl.UserRepositoryImpl;
 import payzo.app.dto.UserDtoLogin;
 import payzo.app.dto.UserDtoRegister;
+import payzo.app.dto.UserDtoUpdate;
 
 import java.net.PasswordAuthentication;
 
@@ -54,7 +55,7 @@ public class userController {
     }
 
     @PutMapping(value = "/register/{id}", produces = "application/json")
-    public ResponseEntity<?> updateUser (@RequestBody @Valid UserDtoRegister userDtoRegister,@PathVariable Long id) {
+    public ResponseEntity<?> updateUser (@RequestBody @Valid UserDtoUpdate userDtoRegister, @PathVariable Long id) {
 
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(userRepositoryImpl.userUpdate(userDtoRegister,id));

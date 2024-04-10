@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import payzo.app.Model.User;
 import payzo.app.Repository.UserRepository;
-import payzo.app.dto.ResponseUserComplete;
-import payzo.app.dto.UserDtoLogin;
-import payzo.app.dto.UserDtoRegister;
-import payzo.app.dto.responseUser;
+import payzo.app.dto.*;
 
 @Service
 @Transactional
@@ -34,7 +31,7 @@ public class UserRepositoryImpl {
         return new responseUser(userCreated);
     }
 
-    public responseUser userUpdate(UserDtoRegister userDtoRegister, Long id) {
+    public responseUser userUpdate(UserDtoUpdate userDtoRegister, Long id) {
         var user = userRepository.findById(id);
         if(userDtoRegister.name()!=null) user.get().setName(userDtoRegister.name());
         if(userDtoRegister.lastname()!=null) user.get().setLastname(userDtoRegister.lastname());
