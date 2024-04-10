@@ -44,7 +44,7 @@ public class userController {
     }
 
     @PostMapping(value = "/login", produces = "application/json")
-    public ResponseEntity<?> getLogin (@RequestBody @Valid UserDtoLogin userDtoLogin) {
+    public ResponseEntity<?> Login (@RequestBody @Valid UserDtoLogin userDtoLogin) {
 
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(userRepositoryImpl.userLogin(userDtoLogin));
@@ -52,4 +52,16 @@ public class userController {
             return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hups!! algo salio mal"+e.getMessage());
         }
     }
+
+    @PutMapping(value = "/register/{id}", produces = "application/json")
+    public ResponseEntity<?> updateUser (@RequestBody @Valid UserDtoRegister userDtoRegister,@PathVariable Long id) {
+
+        try {
+            return ResponseEntity.status(HttpStatus.CREATED).body(userRepositoryImpl.userUpdate(userDtoRegister,id));
+        } catch (Exception e) {
+            return  ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario ya existe");
+        }
+    }
+
+
 }

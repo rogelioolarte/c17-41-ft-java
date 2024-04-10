@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import payzo.app.dto.UserDtoRegister;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -46,5 +47,17 @@ public class User {
         this.password = userDtoRegister.password();
         this.avatar = userDtoRegister.avatar();
         this.cbuDollar = userDtoRegister.cbuDollar();
+    }
+
+    public User(Optional<User> userUpdate) {
+        this.userId = userUpdate.get().getUserId();
+        this.name = userUpdate.get().getName();
+        this.lastname = userUpdate.get().getLastname();
+        this.dni = userUpdate.get().getDni();
+        this.email = userUpdate.get().getEmail();
+        this.password = userUpdate.get().getPassword();
+        this.avatar = userUpdate.get().getAvatar();
+        this.wallet = userUpdate.get().getWallet();
+        this.cbuDollar = userUpdate.get().getCbuDollar();
     }
 }
