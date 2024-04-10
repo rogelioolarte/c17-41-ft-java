@@ -6,8 +6,8 @@ const login = async (email, password, navigateToErrorPage) => {
       email: email,
       password: password,
     });
-    sessionStorage.setItem('token', user.data.token)
-    return true;
+    sessionStorage.setItem("token", user.data.token);
+    return user;
   } catch (error) {
     navigateToErrorPage(error.message);
     throw error;
@@ -31,6 +31,7 @@ const register = async (
       password: password,
       account: account,
     });
+    sessionStorage.setItem("token", newUser.data.token);
     return newUser;
   } catch (error) {
     navigateToErrorPage(error.message);
