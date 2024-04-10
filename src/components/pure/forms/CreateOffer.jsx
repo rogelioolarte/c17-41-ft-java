@@ -1,31 +1,22 @@
+import { useEffect, useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { LIST_PRODUCTS } from "../../../mocks/products.mocks";
-import ArrowLeftRight from '../ArrowLeftRight';
 import '../../../styles/styleDashboard.scss'
+
 import { obtainProduct, sendOffer } from '../../../services/dashboardService';
+import ArrowLeftRight from '../ArrowLeftRight';
+import { LIST_PRODUCTS } from "../../../mocks/products.mocks";
 
-const products = obtainProduct() != true ? obtainProduct() : [];
-const listOfCurrencies = products != [] ? LIST_PRODUCTS : products;
-
-
-const initialValues = { typeOfCurrency: '', typeOfOffer: '', amountOfOffer: 0 };
-
-// Definir esquema de validación Yup
+// Define a validation schema with yup
 const validationSchema = Yup.object().shape({
     typeOfCurrency: Yup.string().required('El tipo de moneda es requerido'),
     typeOfOffer: Yup.string().required('El tipo de oferta es requerido'),
     amountOfOffer: Yup.number().required('La cantidad es requerida')
-        .positive('La cantidad debe ser positiva').nonNullable(),
+        .positive('La cantidad debe ser positiva'),
 });
+// Inicial values for formik
+const initialValues = { typeOfCurrency: '', typeOfOffer: '', amountOfOffer: 0 };
 
-const calculateCrypto = (amount, typeCurrency) => {
-    console.log(products)
-    return  listOfCurrencies != [] ? 
-        JSON.stringify(listOfCurrencies
-            .find(value => value.name == typeCurrency).price) * amount
-        : amount
-}
 
 function CreateOffer() {
 
@@ -37,8 +28,23 @@ function CreateOffer() {
         }
         alert(JSON.stringify(values));
         setSubmitting(false);
-        
     };
+
+    const [products, setProducts] = useState([]);
+    const listOfCurrencies = products.length !==0 ? products : LIST_PRODUCTS;
+
+    useEffect(() => {
+        obtainProduct().then((data)=> {
+            setProducts(data)
+        })
+    },[])
+
+    const calculateCrypto = (amount, typeCurrency) => {
+        return  listOfCurrencies != [] ? 
+            amount / JSON.stringify(listOfCurrencies
+                .find(value => value.productName == typeCurrency).currentPrice)
+            : amount
+    }
 
     return (
         <div className='forms-adjust-init' >
@@ -50,9 +56,11 @@ function CreateOffer() {
             <h1 className="title-form-init" >Select your currency</h1>
             {listOfCurrencies.map((currency, index) => (
                 <div className="form-check form-check-inline" key={index}>
-                <Field className="form-check-input" type="radio" name="typeOfCurrency" id={currency.name} value={currency.name} />
-                <label className="form-check-label" htmlFor={currency.name}>
-                    {currency.name.charAt(0).toUpperCase() + currency.name.slice(1).toLowerCase()}
+                <Field className="form-check-input" type="radio" name="typeOfCurrency" 
+                    id={currency.productName} value={currency.productName} />
+                <label className="form-check-label" htmlFor={currency.productName}>
+                    {currency.productName.charAt(0).toUpperCase() + 
+                        currency.productName.slice(1).toLowerCase()}
                 </label>
                 </div>
             ))}
@@ -60,23 +68,23 @@ function CreateOffer() {
 
             <h1 className="title-form-init"  >Select the type of the offer</h1>
             <div className="form-check form-check-inline" >
-                <Field className="form-check-input" type="radio" name="typeOfOffer" id="buy" value="buy" />
+                <Field className="form-check-input" type="radio" name="typeOfOffer" 
+                    id="buy" value="buy" />
                 <label className="form-check-label" htmlFor="buy">Buy</label>
             </div>
             <div className="form-check form-check-inline " >
-                <Field className="form-check-input" type="radio" name="typeOfOffer" id="sell" value="sell" />
+                <Field className="form-check-input" type="radio" name="typeOfOffer" 
+                    id="sell" value="sell" />
                 <label className="form-check-label" htmlFor="sell">Sell</label>
             </div>
             <ErrorMessage name="typeOfOffer" component="div" className="invalid-feedback" />
             <h1 className="title-form-init "  >Select the amount to offer</h1>
             <div className="mb-1 ">
                 <label htmlFor="amountOfOffer" className="form-label icon-init">USD</label>
-                <Field type="number" className="form-control-sm" id="amountOfOffer" name="amountOfOffer" />
+                <Field type="number" className="form-control-sm" id="amountOfOffer" 
+                    name="amountOfOffer" />
                 <ErrorMessage name="amountOfOffer" component="div" className="invalid-feedback" />
                 <ArrowLeftRight/>
-                {/* <i> {values.typeOfCurrency != '' ? (values.amountOfOffer * JSON.stringify(listOfCurrencies
-                .find(value => value.name == values.typeOfCurrency).price))
-                : values.amountOfOffer} {values.typeOfCurrency}</i> */}
                 <i>{values.typeOfCurrency != '' ? 
                     calculateCrypto(values.amountOfOffer, values.typeOfCurrency)
                     : values.amountOfOffer}</i>
