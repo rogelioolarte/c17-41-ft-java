@@ -2,11 +2,10 @@ import axios from "axios";
 
 const login = async (email, password, navigateToErrorPage) => {
   try {
-    const user = await axios.post("https://reqres.in/api/login", {
+    const user = await axios.post("https://localhost:8080/api/user/login", {
       email: email,
       password: password,
     });
-    sessionStorage.setItem("token", user.data.token);
     return user;
   } catch (error) {
     navigateToErrorPage(error.message);
@@ -19,19 +18,23 @@ const register = async (
   idPassport,
   email,
   password,
+  avatar,
   account,
   navigateToErrorPage
 ) => {
   try {
-    const newUser = await axios.post("https://reqres.in/api/register", {
-      firstName: firstName,
-      lastName: lastName,
-      idPassport: idPassport,
-      email: email,
-      password: password,
-      account: account,
-    });
-    sessionStorage.setItem("token", newUser.data.token);
+    const newUser = await axios.post(
+      "https://localhost:8080/api/user/register",
+      {
+        firstName: firstName,
+        lastName: lastName,
+        idPassport: idPassport,
+        email: email,
+        password: password,
+        avatar: avatar,
+        account: account,
+      }
+    );
     return newUser;
   } catch (error) {
     navigateToErrorPage(error.message);

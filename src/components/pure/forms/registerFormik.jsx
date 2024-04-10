@@ -11,6 +11,7 @@ const RegisterFormik = () => {
   const [idPassport, changeIdPassport] = useString("");
   const [email, changeEmail] = useString("");
   const [password, changePassword] = useString("");
+  const [avatar, changeAvatar] = useString("");
   const [account, changeAccount] = useString("");
 
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const RegisterFormik = () => {
     idPassport: idPassport,
     email: email,
     password: password,
+    avatar: avatar,
     account: account,
   };
 
@@ -39,6 +41,7 @@ const RegisterFormik = () => {
       idPassport,
       email,
       password,
+      avatar,
       account,
       navigateToErrorPage
     );
@@ -119,6 +122,18 @@ const RegisterFormik = () => {
           </div>
 
           <div className="login-register-input">
+            <label htmlFor="avatar">Avatar</label>
+            <Field
+              value={account}
+              onChange={handleChange(changeAvatar)}
+              type="text"
+              id="avatar"
+              name="avatar"
+              className="register-field"
+            />
+          </div>
+
+          <div className="login-register-input">
             <label htmlFor="account">Dollar Account No.</label>
             <Field
               value={account}
@@ -136,12 +151,12 @@ const RegisterFormik = () => {
           </button>
           <div>
             <p className="navigation-link">
-              Already have an account? <NavLink to={"/login"}>Login now!</NavLink>
+              Already have an account?{" "}
+              <NavLink to={"/login"}>Login now!</NavLink>
             </p>
           </div>
         </Form>
       </Formik>
-      
     </section>
   );
 };
