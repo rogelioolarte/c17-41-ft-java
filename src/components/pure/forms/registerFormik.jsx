@@ -134,13 +134,14 @@ const RegisterFormik = () => {
             Register Now!
             <i className="fas fa-chevron-right" />
           </button>
+          <div>
+            <p className="navigation-link">
+              Already have an account? <NavLink to={"/login"}>Login now!</NavLink>
+            </p>
+          </div>
         </Form>
       </Formik>
-      <div>
-        <p className="navigation-link">
-          Already have an account? <NavLink to={"/login"}>Login now!</NavLink>
-        </p>
-      </div>
+      
     </section>
   );
 };

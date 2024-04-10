@@ -2,7 +2,7 @@ import RegisterFormik from "../components/pure/forms/registerFormik";
 
 function RegisterPage() {
   return (
-    <div>
+    <div className="register-page">
       <RegisterFormik />
     </div>
   );

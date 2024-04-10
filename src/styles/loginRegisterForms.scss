@@ -6,7 +6,8 @@
 }
 
 .login-register-section {
-    height: 80vh;
+    height: 100%;
+    max-height: max-content;
     background: white;
     padding-left: 3rem;
     font-size: 0.7rem;
@@ -125,4 +126,7 @@
         font-size: 0.9rem;
     }
 
+}
+.register-page {
+    height: 85vh;
 }
