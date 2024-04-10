@@ -3,7 +3,7 @@ import { MAIN_API, ROUTE_GET_PRODUCTS, ROUTE_SEND_OFFER } from '../config/api_ro
 
 export const obtainProduct = async () => {
     return await fetch(MAIN_API.length !== 0 ? 
-        MAIN_API.concat(ROUTE_GET_PRODUCTS) : `https://reqres.in/api/users?page=1`, {
+        MAIN_API.concat(ROUTE_GET_PRODUCTS) : `https://reqres.in/api/unknown/23`, {
         method: 'GET',
         redirect: "follow",
         headers: {
@@ -23,7 +23,7 @@ export const obtainProduct = async () => {
 
 export const sendOffer = async (data) => {
     return await fetch(MAIN_API.length !== 0 ?  
-        MAIN_API.concat(ROUTE_SEND_OFFER) : 'https://reqres.in/api/register', {
+        MAIN_API.concat(ROUTE_SEND_OFFER) : 'https://reqres.in/api/unknown/23', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
