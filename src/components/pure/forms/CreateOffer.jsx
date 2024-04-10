@@ -35,7 +35,7 @@ function CreateOffer() {
 
     useEffect(() => {
         obtainProduct().then((data)=> {
-            setProducts(data)
+            data.length !== 0 ? setProducts(data):setProducts([])
         })
     },[])
 
