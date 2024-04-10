@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import payzo.app.Model.User;
 import payzo.app.Repository.UserRepository;
+import payzo.app.dto.ResponseUserComplete;
 import payzo.app.dto.UserDtoLogin;
 import payzo.app.dto.UserDtoRegister;
 import payzo.app.dto.responseUser;
@@ -20,9 +21,9 @@ public class UserRepositoryImpl {
 
 
 
-    public responseUser findByUserId(Long id) {
+    public ResponseUserComplete findByUserId(Long id) {
         var user =  userRepository.findById(id);
-        return new responseUser(user);
+        return new ResponseUserComplete(user);
     }
 
     public responseUser userRegister(UserDtoRegister userDtoRegister) {
