@@ -77,7 +77,6 @@ const LoginFormik = () => {
             <p className="navigation-link big-link">
               Don`t have an account yet?
               <NavLink to={"/register"}> Register now!</NavLink>
-              <Link to="/dashboard"> ---Dashboard--- </Link>
             </p>
           </div>
         </Form>
