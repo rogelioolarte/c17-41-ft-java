@@ -2,13 +2,16 @@ package payzo.app.Model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import payzo.app.dto.UserDtoRegister;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -17,7 +20,6 @@ import java.util.Optional;
 public class User {
 
     @Id
-    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
     @Column(name = "first_name")
@@ -38,6 +40,9 @@ public class User {
     private String cbuDollar;
     @Column(name = "cbu_pesos")
     private String cbuPesos;
+
+    @OneToMany(mappedBy = "userId")
+    private List<Transaction> transacciones;
 
     public User(UserDtoRegister userDtoRegister) {
         this.name = userDtoRegister.name();

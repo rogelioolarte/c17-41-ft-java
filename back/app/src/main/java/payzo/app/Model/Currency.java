@@ -1,12 +1,12 @@
 package payzo.app.Model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import java.util.Date;
+import lombok.*;
 
+import java.util.Date;
+import java.util.List;
+
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -15,7 +15,6 @@ import java.util.Date;
 public class Currency {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "crypto_id")
     private Long cryptoId;
     @Column(name = "product_type")
     private ProductType productType;
@@ -32,6 +31,8 @@ public class Currency {
     @Column(name = "active")
     private Boolean active;
 
+    @OneToMany(mappedBy = "cryptoId")
+    private List<Transaction> transacciones;
 
 
     public enum ProductType{
