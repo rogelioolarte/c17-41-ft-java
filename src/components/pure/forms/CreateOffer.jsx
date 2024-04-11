@@ -23,10 +23,12 @@ function CreateOffer() {
     // Función para enviar el formulario
     const handleSubmit = (values, { setSubmitting }) => {
         // Aquí puedes manejar la lógica de envío del formulario
+        values.typeOfCurrency = findCrypto(values.typeOfCurrency)
         if(sendOffer(JSON.stringify(values))){
             alert('Request send correctly')
         }
         alert(JSON.stringify(values));
+        values.typeOfCurrency = values.typeOfCurrency.productName
         setSubmitting(false);
     };
 
@@ -35,15 +37,14 @@ function CreateOffer() {
 
     useEffect(() => {
         obtainProduct().then((data)=> {
-            setProducts(data)
+            data.length !== 0 ? setProducts(data) : setProducts([])
         })
     },[])
 
-    const calculateCrypto = (amount, typeCurrency) => {
-        return  listOfCurrencies != [] ? 
-            amount / JSON.stringify(listOfCurrencies
-                .find(value => value.productName == typeCurrency).currentPrice)
-            : amount
+    const findCrypto = (typeCurrency) => {
+        return  listOfCurrencies.length !== 0 ? 
+            listOfCurrencies.find(value => value.productName == typeCurrency)
+            : 'Not found currency'
     }
 
     return (
@@ -59,8 +60,7 @@ function CreateOffer() {
                 <Field className="form-check-input" type="radio" name="typeOfCurrency" 
                     id={currency.productName} value={currency.productName} />
                 <label className="form-check-label" htmlFor={currency.productName}>
-                    {currency.productName.charAt(0).toUpperCase() + 
-                        currency.productName.slice(1).toLowerCase()}
+                    { currency.productName }
                 </label>
                 </div>
             ))}
@@ -85,9 +85,11 @@ function CreateOffer() {
                     name="amountOfOffer" />
                 <ErrorMessage name="amountOfOffer" component="div" className="invalid-feedback" />
                 <ArrowLeftRight/>
-                <i>{values.typeOfCurrency != '' ? 
-                    calculateCrypto(values.amountOfOffer, values.typeOfCurrency)
-                    : values.amountOfOffer}</i>
+                <i>{ values.typeOfCurrency.length !== 0 ? 
+                        values.amountOfOffer / findCrypto(values.typeOfCurrency).currentPrice
+                    : values.amountOfOffer} 
+                    { values.typeOfCurrency.length !== 0 ? 
+                        findCrypto(values.typeOfCurrency).symbol : ''}</i>
             </div>
             <button type="submit" className="btn btn-primary submit-button-init">Submit</button>
             </Form>

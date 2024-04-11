@@ -1,8 +1,10 @@
 import axios from "axios";
+import { MAIN_API, ROUTE_LOGIN, ROUTE_REGISTER } from '../config/api_routes'
 
 const login = async (email, password, navigateToErrorPage) => {
   try {
-    const user = await axios.post("https://localhost:8080/api/user/login", {
+    const user = await axios.post(MAIN_API.length !== 0 ?  
+        MAIN_API.concat(ROUTE_LOGIN) : 'https://reqres.in/api/login', {
       email: email,
       password: password,
     });
@@ -25,7 +27,8 @@ const register = async (
 ) => {
   try {
     const newUser = await axios.post(
-      "https://localhost:8080/api/user/register",
+      MAIN_API.length !== 0 ?  
+        MAIN_API.concat(ROUTE_REGISTER) : 'https://reqres.in/api/register',
       {
         firstName: firstName,
         lastName: lastName,

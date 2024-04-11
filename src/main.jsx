@@ -13,18 +13,18 @@ import HomePage from "./pages/HomePage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
 import RecoverPage from "./pages/RecoverPage.jsx";
 import WalletPage from "./pages/WalletPage.jsx";
-import ShowHistory from "./components/pure/ShowHistory.jsx";
+import ShowHistory from "./components/container/ShowHistory.jsx";
 import CreateOffer from "./components/pure/forms/CreateOffer.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
-import ConfigSection from "./components/pure/configSection.jsx";
+import ConfigSection from "./components/container/configSection.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      { path: "/home", element: <Navigate to="/" /> },
-      { path: "/", element: <HomePage /> },
+      { path: "/", element: <Navigate to="/home" /> },
+      { path: "/home", element: <HomePage /> },
       { path: "/error", element: <ErrorPage /> },
       { path: "/config", element: <ConfigSection /> },
       {
