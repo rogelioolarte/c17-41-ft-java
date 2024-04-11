@@ -47,6 +47,7 @@ function ConfigFormik() {
       configLastName,
       configIdPassport,
       configEmail,
+      configPassword,
       configAvatar,
       configAccount,
       navigateToErrorPage

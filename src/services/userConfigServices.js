@@ -6,6 +6,7 @@ const updateUserInfo = async (
   lastName,
   idPassport,
   email,
+  password,
   avatar,
   account,
   navigateToErrorPage
@@ -16,6 +17,7 @@ const updateUserInfo = async (
       lastName: lastName,
       idPassport: idPassport,
       email: email,
+      password: password,
       avatar: avatar,
       account: account,
     });
