@@ -61,7 +61,7 @@ public class userController {
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(userRepositoryImpl.userUpdate(userDtoRegister,id));
         } catch (Exception e) {
-            return  ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario ya existe");
+            return  ResponseEntity.status(HttpStatus.CONFLICT).body("Error al actulizar el ususario");
         }
     }
 

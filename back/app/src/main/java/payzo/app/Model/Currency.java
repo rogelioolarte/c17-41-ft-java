@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Builder
 @NoArgsConstructor
@@ -31,9 +32,23 @@ public class Currency {
     @Column(name = "active")
     private Boolean active;
 
-    @OneToMany(mappedBy = "cryptoId")
+    @OneToMany(mappedBy = "currency")
     private List<Transaction> transacciones;
 
+    public Currency(Optional<Currency> c){
+        this.cryptoId = c.get().cryptoId();
+        this.productType = c.get().getProductType();
+    this.symbol = c.get().getSymbol();
+        this.productName= c.get().getProductName();
+        this.currentPrice= c.get().getCurrentPrice();
+        this.previousPrice = c.get().getPreviousPrice();
+        this.lastUpdate= c.get().getLastUpdate();
+        this.active = c.get().getActive();
+    }
+
+    private Long cryptoId() {
+        return this.cryptoId;
+    }
 
     public enum ProductType{
         crypto,

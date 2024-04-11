@@ -24,8 +24,9 @@ public class Transaction {
     private User userId;
     @ManyToOne
     @JoinColumn(name = "crypto_id", referencedColumnName = "cryptoId")
-    private Currency cryptoId;
+    private Currency currency;
     @Column(name = "transaction_type")
+    @Enumerated(EnumType.STRING)
     private TRANSACTIONTYPE type;
     @Column(name = "quantity")
     private int quantity;
@@ -39,10 +40,8 @@ public class Transaction {
 
     public Transaction(TransactionDtoBuy transactionDtoBuy) {
         this.userId = User.builder().userId(transactionDtoBuy.userId()).build() ;
-        this.cryptoId = Currency.builder().cryptoId(transactionDtoBuy.currencyId()).build();
-        this.type = TRANSACTIONTYPE.valueOf(transactionDtoBuy.transactionType());
+        this.currency = Currency.builder().cryptoId(transactionDtoBuy.currencyId()).build();
         this.quantity = transactionDtoBuy.quantity();
-        this.pricePerUnit = new BigDecimal(transactionDtoBuy.pricePerUnit());
-        this.total.add(new BigDecimal(transactionDtoBuy.pricePerUnit() * transactionDtoBuy.quantity()));
+
     }
 }

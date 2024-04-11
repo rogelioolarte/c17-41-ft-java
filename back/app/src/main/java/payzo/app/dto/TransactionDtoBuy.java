@@ -8,13 +8,10 @@ public record TransactionDtoBuy(
         Long userId,
         @NotNull
         Long currencyId,
-        @NotBlank
-        String transactionType,
 
         @NotNull
-        int quantity,
-        @NotNull
-        Double pricePerUnit
+        int quantity
+
 
 ) {
 
