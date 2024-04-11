@@ -8,6 +8,10 @@ const login = async (email, password, navigateToErrorPage) => {
       email: email,
       password: password,
     });
+    /**
+     * Token temporal
+     */
+    sessionStorage.setItem('token', 'user')
     return user;
   } catch (error) {
     navigateToErrorPage(error.message);

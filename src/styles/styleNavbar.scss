@@ -21,11 +21,19 @@
     align-items: center;
     margin-left: 1rem;
 }
+
+.logo-nav {
+    @extend .color-background;
+    width: 75%;
+    display: flex;
+    align-items: center;
+}
+
 .button-init {
     @extend .color-background;
     display: flex;
     justify-content: space-between;
-    margin-right: 2rem;
+    margin-right: 1rem;
 }
 .button-nav {
     margin-left: 1.5rem;
