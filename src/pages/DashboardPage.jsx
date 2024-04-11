@@ -1,5 +1,5 @@
 import DashboardPannel from "../components/pure/dashboardPannel";
-import DashboardSection from "../components/pure/dashboardSection";
+import DashboardSection from "../components/container/dashboardSection";
 import "../styles/styleDashboard.scss";
 
 function DashboardPage() {

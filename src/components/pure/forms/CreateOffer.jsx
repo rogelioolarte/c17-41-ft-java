@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
         .positive('La cantidad debe ser positiva'),
 });
 // Inicial values for formik
-const initialValues = { typeOfCurrency: '', typeOfOffer: '', amountOfOffer: 0 };
+const initialValues = { currency: {}, typeOfOffer: '', amount: 0 };
 
 
 function CreateOffer() {
@@ -35,15 +35,14 @@ function CreateOffer() {
 
     useEffect(() => {
         obtainProduct().then((data)=> {
-            data.length !== 0 ? setProducts(data):setProducts([])
+            data.length !== 0 ? setProducts(data) : setProducts([])
         })
     },[])
 
-    const calculateCrypto = (amount, typeCurrency) => {
-        return  listOfCurrencies != [] ? 
-            amount / JSON.stringify(listOfCurrencies
-                .find(value => value.productName == typeCurrency).currentPrice)
-            : amount
+    const findCrypto = (typeCurrency) => {
+        return  listOfCurrencies.length !== 0 ? 
+            listOfCurrencies.find(value => value.productName == typeCurrency)
+            : 'Not found currency'
     }
 
     return (
@@ -56,11 +55,10 @@ function CreateOffer() {
             <h1 className="title-form-init" >Select your currency</h1>
             {listOfCurrencies.map((currency, index) => (
                 <div className="form-check form-check-inline" key={index}>
-                <Field className="form-check-input" type="radio" name="typeOfCurrency" 
-                    id={currency.productName} value={currency.productName} />
-                <label className="form-check-label" htmlFor={currency.productName}>
-                    {currency.productName.charAt(0).toUpperCase() + 
-                        currency.productName.slice(1).toLowerCase()}
+                <Field className="form-check-input" type="radio" name="currency" 
+                    id={currency} value={currency} />
+                <label className="form-check-label" htmlFor={currency}>
+                    {currency.productName}
                 </label>
                 </div>
             ))}
@@ -80,14 +78,18 @@ function CreateOffer() {
             <ErrorMessage name="typeOfOffer" component="div" className="invalid-feedback" />
             <h1 className="title-form-init "  >Select the amount to offer</h1>
             <div className="mb-1 ">
-                <label htmlFor="amountOfOffer" className="form-label icon-init">USD</label>
-                <Field type="number" className="form-control-sm" id="amountOfOffer" 
-                    name="amountOfOffer" />
-                <ErrorMessage name="amountOfOffer" component="div" className="invalid-feedback" />
+                <label htmlFor="amount" className="form-label icon-init">USD</label>
+                <Field type="number" className="form-control-sm" id="amount" 
+                    name="amount" />
+                <ErrorMessage name="amount" component="div" className="invalid-feedback" />
                 <ArrowLeftRight/>
-                <i>{values.typeOfCurrency != '' ? 
-                    calculateCrypto(values.amountOfOffer, values.typeOfCurrency)
-                    : values.amountOfOffer}</i>
+                <i> {values}
+                    {/*  {values.typeOfCurrency !== '' ? 
+                    values.amountOfOffer / findCrypto(values.typeOfCurrency).currentPrice
+                    : values.amountOfOffer} 
+                    {values.typeOfCurrency !== '' ? 
+                    findCrypto(values.typeOfCurrency).symbol : ''} */}
+                </i>
             </div>
             <button type="submit" className="btn btn-primary submit-button-init">Submit</button>
             </Form>
