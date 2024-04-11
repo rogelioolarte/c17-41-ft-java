@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { UserProvider } from "./contexts/user.context";
+
 import "./App.css";
 
 import NavBar from "./components/container/NavBar";
@@ -7,10 +7,8 @@ import NavBar from "./components/container/NavBar";
 function App() {
   return (
     <div>
-      <UserProvider>
-        <NavBar />
-        <Outlet />
-      </UserProvider>
+      <NavBar />
+      <Outlet />
     </div>
   );
 }

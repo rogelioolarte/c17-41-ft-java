@@ -5,6 +5,7 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
+import { UserProvider } from "./contexts/user.context.jsx";
 import App from "./App.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
@@ -46,5 +47,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <UserProvider>
+    <RouterProvider router={router} />
+  </UserProvider>
 );
