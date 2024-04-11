@@ -1,11 +1,14 @@
 package payzo.app.Repository.impl;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import payzo.app.Model.User;
 import payzo.app.Repository.UserRepository;
 import payzo.app.dto.*;
+
+import java.math.BigDecimal;
 
 @Service
 @Transactional
@@ -43,5 +46,14 @@ public class UserRepositoryImpl {
         var userUpdate = userRepository.save(new User(user) );
         return new responseUser(userUpdate);
 
+    }
+
+    public responseUser userWalletCharge(UserDtoWallet userDtoWallet, Long id) {
+        var user = userRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Order not found"));
+        var chargeWallet = new BigDecimal(userDtoWallet.quantity());
+        if(chargeWallet.compareTo(BigDecimal.ZERO)  <=0 ) throw new ArithmeticException("Error al procesar los claculos");
+        if(user.getWallet() == null) user.setWallet(BigDecimal.valueOf((0)));
+        user.setWallet(user.getWallet().add(chargeWallet));
+        return new responseUser(user);
     }
 }

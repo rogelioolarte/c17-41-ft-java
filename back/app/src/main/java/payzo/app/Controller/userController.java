@@ -10,6 +10,7 @@ import payzo.app.Repository.impl.UserRepositoryImpl;
 import payzo.app.dto.UserDtoLogin;
 import payzo.app.dto.UserDtoRegister;
 import payzo.app.dto.UserDtoUpdate;
+import payzo.app.dto.UserDtoWallet;
 
 import java.net.PasswordAuthentication;
 
@@ -64,5 +65,13 @@ public class userController {
         }
     }
 
+    @PatchMapping(value = "/wallet/{id}", produces = "application/json")
+    public ResponseEntity<?> updateWallet (@RequestBody @Valid UserDtoWallet userDtoWallet, @PathVariable Long id) {
 
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(userRepositoryImpl.userWalletCharge(userDtoWallet,id));
+        } catch (Exception e) {
+            return  ResponseEntity.status(HttpStatus.CONFLICT).body("No se puedo realizar la carga de dinero");
+        }
+    }
 }
