@@ -12,6 +12,7 @@ const login = async (email, password, navigateToErrorPage) => {
     throw error;
   }
 };
+
 const register = async (
   firstName,
   lastName,

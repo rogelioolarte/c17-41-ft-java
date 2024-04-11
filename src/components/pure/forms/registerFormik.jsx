@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { Formik, Field, Form } from "formik";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { UserContext } from "../../../contexts/user.context";
 import { register } from "../../../services/authService";
 import useString from "../../../../hooks/useString";
 import Logo from "../../../assets/payzo.svg";
@@ -13,6 +15,8 @@ const RegisterFormik = () => {
   const [password, changePassword] = useString("");
   const [avatar, changeAvatar] = useString("");
   const [account, changeAccount] = useString("");
+
+  const { assignUserInfo } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -45,7 +49,10 @@ const RegisterFormik = () => {
       account,
       navigateToErrorPage
     );
-    if (newUser) navigate("/dashboard");
+    if (newUser) {
+      assignUserInfo(newUser);
+      navigate("/dashboard");
+    }
   };
 
   return (

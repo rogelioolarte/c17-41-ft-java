@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Field, Form } from "formik";
 import { Link, NavLink } from "react-router-dom";
+import { UserContext } from "../../../contexts/user.context";
 import useString from "../../../../hooks/useString";
 import { login } from "../../../services/authService";
 import "../../../styles/loginRegisterForms.scss";
@@ -10,6 +12,8 @@ const LoginFormik = () => {
   const [email, changeEmail] = useString("");
   const [password, changePassword] = useString("");
   const navigate = useNavigate();
+
+  const { assignUserInfo } = useContext(UserContext);
 
   const handleChange = (setter) => (evt) => {
     setter(evt.target.value);
@@ -21,7 +25,10 @@ const LoginFormik = () => {
 
   const handleSubmit = async () => {
     const user = await login(email, password, navigateToErrorPage);
-    if (user) navigate("/dashboard");
+    if (user) {
+      assignUserInfo(user);
+      navigate("/dashboard");
+    }
   };
 
   return (
