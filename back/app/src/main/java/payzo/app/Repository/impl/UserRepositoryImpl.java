@@ -9,6 +9,7 @@ import payzo.app.Repository.UserRepository;
 import payzo.app.dto.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 @Transactional
@@ -19,9 +20,9 @@ public class UserRepositoryImpl {
 
 
 
-    public ResponseUserComplete findByUserId(Long id) {
-        var user =  userRepository.findById(id);
-        return new ResponseUserComplete(user);
+    public List<?> findByUserId(Long id) {
+        return  userRepository.findByIdComplete(id);
+
     }
 
     public responseUser userRegister(UserDtoRegister userDtoRegister) {

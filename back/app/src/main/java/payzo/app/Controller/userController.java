@@ -31,7 +31,7 @@ public class userController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(userRepositoryImpl.findByUserId(id));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong n/" + e.getMessage());
         }
     }
 
