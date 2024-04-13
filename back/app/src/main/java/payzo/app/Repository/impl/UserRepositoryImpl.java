@@ -50,7 +50,7 @@ public class UserRepositoryImpl {
 
     }
 
-    public responseUser userUpdate(UserDtoUpdate userDtoRegister, Long id) {
+    public UserDtoUpdate userUpdate(UserDtoUpdate userDtoRegister, Long id) {
         var user = userRepository.findById(id);
         if(userDtoRegister.name()!=null) user.get().setName(userDtoRegister.name());
         if(userDtoRegister.lastname()!=null) user.get().setLastname(userDtoRegister.lastname());
@@ -60,7 +60,7 @@ public class UserRepositoryImpl {
         if(userDtoRegister.avatar()!=null) user.get().setAvatar(userDtoRegister.avatar());
         if(userDtoRegister.cbuDollar()!=null) user.get().setCbuDollar(userDtoRegister.cbuDollar());
         var userUpdate = userRepository.save(new User(user) );
-        return new responseUser(userUpdate);
+        return new UserDtoUpdate(userUpdate);
 
     }
 
