@@ -41,7 +41,7 @@ public class TransactionRepositoryImpl  {
         var ususario = userRepositoryImpl.findByUserId(transactionDtoBuy.userId());
         if(totalCuenta > Double.valueOf(String.valueOf(ususario.getWallet()))) throw new RuntimeException("El usuario no posee dinero");
         ususario.setWallet(ususario.getWallet().subtract(new BigDecimal(String.valueOf(totalCuenta))));
-        UserDtoUpdate ususarioActualizado =  userRepositoryImpl.userUpdate(new UserDtoUpdate(ususario), ususario.getUserId());
+        responseUser ususarioActualizado =  userRepositoryImpl.userWalletSell(totalCuenta, ususario.getUserId());
         transactionCreated.setTotal(new BigDecimal(totalCuenta));
          transactionRepository.save(transactionCreated);
 

@@ -72,4 +72,13 @@ public class UserRepositoryImpl {
         user.setWallet(user.getWallet().add(chargeWallet));
         return new responseUser(user);
     }
+
+    public responseUser userWalletSell(Double userDtoWallet, Long id) {
+        var user = userRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Order not found"));
+        var chargeWallet = new BigDecimal(userDtoWallet);
+
+        if(user.getWallet() == null) user.setWallet(BigDecimal.valueOf((0)));
+        user.setWallet(user.getWallet().subtract(chargeWallet));
+        return new responseUser(user);
+    }
 }
