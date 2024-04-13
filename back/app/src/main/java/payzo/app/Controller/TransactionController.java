@@ -25,4 +25,12 @@ public class TransactionController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error! Something went wrong n/"+e.getMessage());
         }
     }
+    @PostMapping(value = "/sell", consumes = "application/json")
+    public ResponseEntity<?> sellCurrency(@RequestBody @Valid TransactionDtoBuy transactionDtoBuy) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(transactionRepositoryImpl.sellCurrency(transactionDtoBuy));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error! Something went wrong n/"+e.getMessage());
+        }
+    }
 }
