@@ -32,9 +32,11 @@ public class UserRepositoryImpl {
     }
 
     public responseUser userLogin(UserDtoLogin userDtoLogin) {
-        List<CurrencyDtoList> listaCurrencyForUser = null;
-        var userCreated = userRepository.findByEmailAndPassword(userDtoLogin.email(),userDtoLogin.password());
-       if(userCreated != null) listaCurrencyForUser = userRepository.findByIdComplete(userCreated.getUserId());
+
+
+        User userCreated = userRepository.findByEmailAndPassword(userDtoLogin.email(),userDtoLogin.password());
+        if(userCreated == null) throw  new  EntityNotFoundException("Datos incorrectos");
+       List<CurrencyDtoList> listaCurrencyForUser = userRepository.findByIdComplete(userCreated.getUserId());
 
         return responseUser.builder()
                 .id(userCreated.getUserId())

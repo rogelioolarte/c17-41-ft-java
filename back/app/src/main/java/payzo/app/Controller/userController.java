@@ -49,7 +49,7 @@ public class userController {
     public ResponseEntity<?> Login (@RequestBody @Valid UserDtoLogin userDtoLogin) {
 
         try {
-            return ResponseEntity.status(HttpStatus.CREATED).body(userRepositoryImpl.userLogin(userDtoLogin));
+            return ResponseEntity.status(HttpStatus.OK).body(userRepositoryImpl.userLogin(userDtoLogin));
         } catch (Exception e) {
             return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hups!! algo salio mal"+e.getMessage());
         }
