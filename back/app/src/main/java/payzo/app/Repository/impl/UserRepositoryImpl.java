@@ -2,6 +2,7 @@ package payzo.app.Repository.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import payzo.app.Model.User;
@@ -20,8 +21,8 @@ public class UserRepositoryImpl {
 
 
 
-    public List<?> findByUserId(Long id) {
-        return  userRepository.findByIdComplete(id);
+    public User findByUserId(Long id) {
+        return new User(userRepository.findById(id) );
 
     }
 
@@ -31,8 +32,20 @@ public class UserRepositoryImpl {
     }
 
     public responseUser userLogin(UserDtoLogin userDtoLogin) {
+        List<CurrencyDtoList> listaCurrencyForUser = null;
         var userCreated = userRepository.findByEmailAndPassword(userDtoLogin.email(),userDtoLogin.password());
-        return new responseUser(userCreated);
+       if(userCreated != null) listaCurrencyForUser = userRepository.findByIdComplete(userCreated.getUserId());
+
+        return responseUser.builder()
+                .id(userCreated.getUserId())
+                .name(userCreated.getName())
+                .avatar(userCreated.getAvatar())
+                .wallet(userCreated.getWallet())
+                .currencyDtoList(listaCurrencyForUser)
+                .build();
+
+
+
     }
 
     public responseUser userUpdate(UserDtoUpdate userDtoRegister, Long id) {
