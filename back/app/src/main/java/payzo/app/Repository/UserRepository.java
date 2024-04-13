@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import payzo.app.Model.Currency;
 import payzo.app.Model.User;
+import payzo.app.dto.CurrencyDtoList;
 import payzo.app.dto.ResponseUserComplete;
 import payzo.app.dto.UserDtoLogin;
 import payzo.app.dto.responseUser;
@@ -17,27 +18,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByEmailAndPassword(String email, String password);
 
-   // @Query("SELECT DISTINCT c FROM User u JOIN u.transaction t JOIN t.currency c WHERE u = :usuario")
-   // List<Currency> findCurrenciesByUsuario(@Param("usuario") User usuario);
 
-   /* @Query(value = "SELECT p.crypto_id,p.product_name,COALESCE(SUM(CASE WHEN t.transaction_type = 'buy' THEN t.quantity ELSE -t.quantity END), 0) AS stock\n" +
-            "FROM currency p LEFT JOIN transactions t ON p.crypto_id = t.transaction_id AND t.user_id =:usuarioId GROUP BY p.crypto_id;", nativeQuery = true)
-    List<?> findByIdComplete(@Param("usuarioId")Long usuarioId);*/
-
-    /*
-    @Query("SELECT  t.currency, " +
-            "COALESCE(SUM(CASE WHEN t.type = 'buy' THEN t.quantity ELSE -t.quantity END) )" +
+    @Query("SELECT NEW payzo.app.dto.CurrencyDtoList(t.currency.cryptoId, t.currency.productName, " +
+            "SUM(CASE WHEN t.type = 'buy' THEN t.quantity ELSE -t.quantity END)) " +
             "FROM Transaction t " +
             "WHERE t.userId.userId = :usuarioId " +
-            "GROUP BY t.currency ")
-    List<?> findByIdComplete(@Param("usuarioId")Long usuarioId);*/
-
-
-    @Query("SELECT t.currency.productName, " +
-            "SUM(CASE WHEN t.type = 'buy' THEN t.quantity ELSE -t.quantity END)" +
-            "FROM Transaction t " +
-            "WHERE t.userId.userId = :usuarioId " +
-            "GROUP BY t.currency.productName " )
-    List<?> findByIdComplete(@Param("usuarioId")Long usuarioId);
+            "GROUP BY t.currency.cryptoId, t.currency.productName")
+    List<CurrencyDtoList> findByIdComplete(@Param("usuarioId") Long usuarioId);
 
 }
