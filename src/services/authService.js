@@ -8,9 +8,7 @@ const login = async (email, password, navigateToErrorPage) => {
       email: email,
       password: password,
     });
-    /**
-     * Token temporal
-     */
+    /** Token temporal */
     sessionStorage.setItem('token', 'user')
     return user;
   } catch (error) {
@@ -33,7 +31,7 @@ const register = async (
     const newUser = await axios.post(
       MAIN_API.length !== 0 ?  
         MAIN_API.concat(ROUTE_REGISTER) : 'https://reqres.in/api/register',
-      {
+      /* {
         firstName: firstName,
         lastName: lastName,
         idPassport: idPassport,
@@ -41,8 +39,14 @@ const register = async (
         password: password,
         avatar: avatar,
         account: account,
+      } */
+      {
+        "email": "eve.holt@reqres.in",
+        "password": "pistol"
       }
     );
+    /** Token temporal */
+    sessionStorage.setItem('token', 'user')
     return newUser;
   } catch (error) {
     navigateToErrorPage(error.message);

@@ -33,7 +33,7 @@ function CreateOffer() {
     };
 
     const [products, setProducts] = useState([]);
-    const listOfCurrencies = products.length !==0 ? products : LIST_PRODUCTS;
+    let listOfCurrencies = products.length !==0 ? products : LIST_PRODUCTS;
 
     useEffect(() => {
         obtainProduct().then((data)=> {

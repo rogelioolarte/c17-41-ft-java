@@ -2,7 +2,7 @@ import { Currency } from "./currency.class";
 
 export class Transaction {
     product = Currency;
-    date = Date;
+    date = '';
     quantity = 0;
 
     /**

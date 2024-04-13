@@ -1,17 +1,26 @@
 import PropTypes from 'prop-types'
-import { Navigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { UserContext, UserProvider } from '../../contexts/user.context';
+import { TOKEN_GET } from '../../config/token';
 
-function ProtectedRoute({ isAllowed, redirectTo, element }) {
-  if(isAllowed){
+function ProtectedRoute({  redirectTo, element }) {
+
+  const { user } = UserProvider(UserContext);
+  const [loggedIn, setLoggedIn] = useState(user || TOKEN_GET);
+
+  useEffect(() => {
+    setLoggedIn(user || TOKEN_GET );
+  }, [user]);
+
+  if(loggedIn){
     return element
   }else {
-    return <Navigate to={redirectTo} />
+    return redirectTo
   }
 }
 
 ProtectedRoute.propTypes = {
-    isAllowed: PropTypes.bool.isRequired,
-    redirectTo: PropTypes.string.isRequired,
+    redirectTo: PropTypes.element.isRequired,
     element: PropTypes.element.isRequired,
     
 }

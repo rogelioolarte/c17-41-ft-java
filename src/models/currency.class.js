@@ -4,7 +4,7 @@ export class Currency {
     productName = '';
     currentPrice = 0;
     previousPrice = 0;
-    lastUpdate = Date;
+    lastUpdate = '';
 
     /**
      * Create a currency
