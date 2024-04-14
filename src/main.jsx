@@ -17,38 +17,26 @@ import ShowHistory from "./components/container/ShowHistory.jsx";
 import CreateOffer from "./components/pure/forms/CreateOffer.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import ConfigSection from "./components/container/configSection.jsx";
-import ProtectedRoute from "./components/container/ProtectedRoute.jsx";
 import { UserProvider } from "./contexts/user.context.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />,
-    children: [
+    path: "/", element: <App />, children: [
       { path: "/", element: <Navigate to="/home" />},
-      { path: "/home", element: <ProtectedRoute redirectTo={<HomePage />}
-          element={<Navigate to="/dashboard" />} />  },
-      { path: "/dashboard", element: <ProtectedRoute redirectTo={<Navigate to="/login" />} 
-          element={<DashboardPage />} />, children: [
+      { path: "/home", element: <HomePage /> },
+      { path: "/dashboard", element: <DashboardPage />, children: [
           { path: "/dashboard", element: <Navigate to="/dashboard/offer" /> },
-          { path: "/dashboard/offer", element: <ProtectedRoute redirectTo={<Navigate to="/login" />} 
-              element={<CreateOffer />} /> },
-          { path: "/dashboard/history", element: <ProtectedRoute redirectTo={<Navigate to="/login" />} 
-              element={<ShowHistory />} /> },
+          { path: "/dashboard/offer", element: <CreateOffer />},
+          { path: "/dashboard/history", element: <ShowHistory /> },
         ],
       },
-      { path: "/wallet", element: <ProtectedRoute redirectTo={<Navigate to="/login" />} 
-          element={<WalletPage />} /> },
-      { path: "/config", element: <ProtectedRoute redirectTo={<Navigate to="/login" />} 
-          element={<ConfigSection />} /> },
+      { path: "/wallet", element: <WalletPage /> },
+      { path: "/config", element: <ConfigSection /> },
     ],
   },
-  { path: "/login", element: <ProtectedRoute redirectTo={<LoginPage />}  
-      element={<Navigate to="/dashboard" />}  /> },
-  { path: "/register", element: <ProtectedRoute redirectTo={<RegisterPage />}
-      element={<Navigate to="/dashboard" />} /> },
-  { path: "/recover", element: <ProtectedRoute redirectTo={<RecoverPage />}
-      element={<Navigate to="/dashboard" />} /> },
+  { path: "/login", element: <LoginPage /> },
+  { path: "/register", element: <RegisterPage /> },
+  { path: "/recover", element: <RecoverPage /> },
   { path: "/error", element: <ErrorPage /> },
   { path: "*", element: <NotFoundPage /> },
 ]);
