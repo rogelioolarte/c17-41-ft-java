@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Field, Form } from "formik";
 import { UserContext } from "../../../contexts/user.context";
 import { updateUserInfo } from "../../../services/userConfigServices";
-import useString from "../../../../hooks/useString";
+import useString from "../../../hooks/useString";
 import "../../../styles/userConfigStyles.scss";
 
 function ConfigFormik() {

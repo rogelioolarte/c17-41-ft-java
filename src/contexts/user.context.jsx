@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import PropTypes from "prop-types";
-import useString from "../../hooks/useString";
+import useString from "../hooks/useString";
 
 const UserContext = createContext();
 

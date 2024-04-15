@@ -3,7 +3,7 @@ import { Formik, Field, Form } from "formik";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../contexts/user.context";
 import { register } from "../../../services/authService";
-import useString from "../../../../hooks/useString";
+import useString from "../../../hooks/useString";
 import Logo from "../../../assets/payzo.svg";
 import "../../../styles/loginRegisterForms.scss";
 
