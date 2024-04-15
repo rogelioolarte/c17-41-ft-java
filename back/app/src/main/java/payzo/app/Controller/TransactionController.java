@@ -33,4 +33,13 @@ public class TransactionController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error! Something went wrong n/"+e.getMessage());
         }
     }
+
+    @GetMapping(value = "{id}" ,consumes = "application/json")
+    public ResponseEntity<?> getransactionById(@PathVariable Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(transactionRepositoryImpl.getCurrency(id));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error! Something went wrong n/"+e.getMessage());
+        }
+    }
 }

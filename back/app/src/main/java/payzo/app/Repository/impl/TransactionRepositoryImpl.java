@@ -14,7 +14,6 @@ import payzo.app.dto.*;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 @Service
 @Transactional
@@ -86,5 +85,11 @@ public class TransactionRepositoryImpl  {
                 .currencyDtoList(listaCurrencyForUser)
                 .build();
 
+    }
+
+    public List<transactionDtoHistoricos> getCurrency(Long id) {
+        User user = userRepositoryImpl.findByUserId(id);
+        List<transactionDtoHistoricos>  transaction =  transactionRepository.findTransactionByuserId(user).stream().map(transactionDtoHistoricos::new).toList();
+   return transaction;
     }
 }
