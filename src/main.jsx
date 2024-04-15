@@ -1,10 +1,6 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import {
-  Navigate,
-  RouterProvider,
-  createBrowserRouter,
-} from "react-router-dom";
+import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
@@ -25,15 +21,13 @@ const router = createBrowserRouter([
       { path: "/", element: <Navigate to="/home" />},
       { path: "/home", element: <HomePage /> },
       { path: "/dashboard", element: <DashboardPage />, children: [
-          { path: "/dashboard", element: <Navigate to="/dashboard/offer" /> },
-          { path: "/dashboard/offer", element: <CreateOffer />},
-          { path: "/dashboard/history", element: <ShowHistory /> },
-        ],
-      },
+        { path: "/dashboard", element: <Navigate to="/dashboard/offer" /> },
+        { path: "/dashboard/offer", element: <CreateOffer />},
+        { path: "/dashboard/history", element: <ShowHistory /> },
+      ]},
       { path: "/wallet", element: <WalletPage /> },
       { path: "/config", element: <ConfigSection /> },
-    ],
-  },
+    ] },
   { path: "/login", element: <LoginPage /> },
   { path: "/register", element: <RegisterPage /> },
   { path: "/recover", element: <RecoverPage /> },

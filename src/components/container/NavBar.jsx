@@ -4,7 +4,7 @@ import Wallet from '../../assets/wallet.svg'
 import Dashboard from '../../assets/dashboard.svg'
 import Config from '../../assets/configuration.svg'
 import Logout from '../../assets/logout.svg'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { UserContext, UserProvider } from '../../contexts/user.context';
 import { useEffect, useState } from 'react'
 import { TOKEN_GET } from '../../config/token'
@@ -13,10 +13,12 @@ function NavBar() {
 
   const { user } = UserProvider(UserContext);
   const [loggedIn, setLoggedIn] = useState(user || TOKEN_GET);
+  const navigate = useNavigate();
 
   function logout() {
     sessionStorage.removeItem('token');
     setLoggedIn(false);
+    navigate("/")
   }
 
   useEffect(() => {

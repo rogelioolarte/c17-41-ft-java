@@ -1,11 +1,13 @@
 export class User {
+    id = null
     firstName = '';
     lastName = '';
     dni = '';
     email = '';
-    password = '';
     urlAvatar = '';
     dollarAccount = '';
+    wallet = null;
+    currencyList = null;
 
     /**
      * Create an User
@@ -17,13 +19,15 @@ export class User {
      * @param {*} urlAvatar Url of the image for the avatar
      * @param {*} dollarAccount Amount of the dollars in the account
      */
-    constructor(firstName, lastName, dni, email, password, urlAvatar, dollarAccount){
+    constructor(id, firstName, lastName, dni, email, urlAvatar, dollarAccount, wallet, currencyList){
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dni = dni;
         this.email = email;
-        this.password = password;
         this.urlAvatar = urlAvatar;
         this.dollarAccount = dollarAccount;
+        this.wallet = wallet;
+        this.currencyList = currencyList;
     }
 }
