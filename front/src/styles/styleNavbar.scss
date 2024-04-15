@@ -1,0 +1,51 @@
+.color-background {
+    background-color: white;
+}
+.navbare {
+    @extend .color-background;
+    border-bottom: 0.05rem solid #D9D9D9;
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    * {
+        background-color: white;
+    }
+}
+
+.logo {
+    @extend .color-background;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.logo-nav {
+    @extend .color-background;
+    width: 73%;
+    display: flex;
+    align-items: center;
+}
+
+.button-init {
+    @extend .color-background;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1rem;
+}
+.button-nav {
+    margin-left: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+.button-init-left {
+    @extend .color-background;
+    @extend .button-nav;
+}
+.button-init-right {
+    @extend .button-nav;
+    background-color: #02BAF2;
+    color: white;
+}
