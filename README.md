@@ -1,7 +1,7 @@
 # Payzo: Billetera Virtual
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/No-Country/c17-41-ft-java/main/payzo.png" alt="Alt Text">
+  <img src="https://raw.githubusercontent.com/No-Country/c17-41-ft-java/main/payzo.svg" alt="Alt Text">
 </p>
 
 ## Sobre Payzo
