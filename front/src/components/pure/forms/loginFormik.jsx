@@ -1,30 +1,28 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import { Link, NavLink } from "react-router-dom";
 import { UserContext } from "../../../contexts/user.context";
-import useString from "../../../hooks/useString";
+import loginSchema from "../../../models/login.schema";
 import { login } from "../../../services/authService";
 import "../../../styles/loginRegisterForms.scss";
 import Logo from "../../../assets/payzo.svg";
 
 const LoginFormik = () => {
-  const [email, changeEmail] = useString("");
-  const [password, changePassword] = useString("");
   const navigate = useNavigate();
 
   const { assignUserInfo } = useContext(UserContext);
-
-  const handleChange = (setter) => (evt) => {
-    setter(evt.target.value);
-  };
 
   const navigateToErrorPage = (error) => {
     navigate(`/error?message=${encodeURIComponent(error)}`);
   };
 
-  const handleSubmit = async () => {
-    const user = await login(email, password, navigateToErrorPage);
+  const handleSubmit = async (values) => {
+    const user = await login(
+      values.email,
+      values.password,
+      navigateToErrorPage
+    );
     if (user) {
       assignUserInfo(user);
       navigate("/dashboard");
@@ -37,16 +35,15 @@ const LoginFormik = () => {
         <img src={Logo} />
       </Link>
       <Formik
-        initialValues={{ email: email, password: password }}
+        initialValues={{ email: "", password: "" }}
         onSubmit={handleSubmit}
+        validationSchema={loginSchema}
       >
         <Form className="login-register-form">
           <h1 className="login-register-title big-title">Log in to Payzo</h1>
           <div className="login-register-input big-label">
             <label htmlFor="email">Email</label>
             <Field
-              value={email}
-              onChange={handleChange(changeEmail)}
               type="email"
               id="email"
               name="email"
@@ -54,16 +51,24 @@ const LoginFormik = () => {
               className="login-register-field login-field"
               autoFocus
             />
+            <ErrorMessage
+              name="email"
+              component="div"
+              className="error-message"
+            />
           </div>
           <div className="login-register-input big-label">
             <label htmlFor="password">Password</label>
             <Field
-              value={password}
-              onChange={handleChange(changePassword)}
               type="password"
               id="password"
               name="password"
               className="login-register-field login-field"
+            />
+            <ErrorMessage
+              name="password"
+              component="div"
+              className="error-message"
             />
             <p className="navigation-link">
               Forgot your password?{" "}

@@ -1,33 +1,56 @@
 export class User {
-    id = null
-    firstName = '';
-    lastName = '';
-    dni = '';
-    email = '';
-    urlAvatar = '';
-    dollarAccount = '';
-    wallet = null;
-    currencyList = null;
+  id;
+  firstName;
+  lastName;
+  idPassport;
+  email;
+  avatar;
+  account;
+  wallet;
+  currencyList;
 
-    /**
-     * Create an User
-     * @param {*} name Name of the User
-     * @param {*} lastName Last Name of the User
-     * @param {*} dni Number of ID
-     * @param {*} email Email of the User
-     * @param {*} password Password of the User
-     * @param {*} urlAvatar Url of the image for the avatar
-     * @param {*} dollarAccount Amount of the dollars in the account
-     */
-    constructor(id, firstName, lastName, dni, email, urlAvatar, dollarAccount, wallet, currencyList){
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dni = dni;
-        this.email = email;
-        this.urlAvatar = urlAvatar;
-        this.dollarAccount = dollarAccount;
-        this.wallet = wallet;
-        this.currencyList = currencyList;
-    }
+  /**
+   * Create a User
+   * @param {*} name first name of the User
+   * @param {*} lastName Last Name of the User
+   * @param {*} idPassport ID or passport number
+   * @param {*} email Email of the User
+   * @param {*} password Password of the User
+   * @param {*} avatar Url of the image for the avatar
+   * @param {*} account Amount of currency in the account
+   */
+
+  constructor() {
+    this.id = "";
+    this.firstName = "";
+    this.lastName = "";
+    this.idPassport = "";
+    this.email = "";
+    this.avatar = "";
+    this.account = "";
+    this.wallet = null;
+    this.currencyList = null;
+  }
+
+  assignValues(
+    id,
+    firstName,
+    lastName,
+    idPassport,
+    email,
+    avatar,
+    account,
+    wallet,
+    currencyList
+  ) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.idPassport = idPassport;
+    this.email = email;
+    this.avatar = avatar;
+    this.account = account;
+    this.wallet = wallet;
+    this.currencyList = currencyList;
+  }
 }

@@ -59,6 +59,10 @@
 
     .login-register-input {
         width: 100%;
+        margin-bottom: 3vh;
+        input {
+                margin-bottom: 0;
+        }
     }
 
     .login-register-field {
@@ -122,6 +126,11 @@
 
     .big-link {
         font-size: 0.9rem;
+    }
+
+    .error-message {
+        font-size: 0.8rem;
+        color: red;
     }
 
 }
