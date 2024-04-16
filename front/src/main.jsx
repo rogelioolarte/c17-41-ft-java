@@ -12,8 +12,8 @@ import WalletPage from "./pages/WalletPage.jsx";
 import ShowHistory from "./components/container/ShowHistory.jsx";
 import CreateOffer from "./components/pure/forms/CreateOffer.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
-import ConfigSection from "./components/container/configSection.jsx";
 import { UserProvider } from "./contexts/user.context.jsx";
+import ConfigPage from "./pages/ConfigPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         { path: "/dashboard/history", element: <ShowHistory /> },
       ]},
       { path: "/wallet", element: <WalletPage /> },
-      { path: "/config", element: <ConfigSection /> },
+      { path: "/config", element: <ConfigPage /> },
     ] },
   { path: "/login", element: <LoginPage /> },
   { path: "/register", element: <RegisterPage /> },
