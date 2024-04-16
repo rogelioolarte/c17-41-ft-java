@@ -21,8 +21,12 @@ function UserProvider(props) {
     );
   };
 
+  const logUserOut = () => {
+    loggedUser.assignValues("", "", "", "", "", "", "", null, null);
+  };
+
   return (
-    <UserContext.Provider value={{ loggedUser, assignUserInfo }}>
+    <UserContext.Provider value={{ loggedUser, assignUserInfo, logUserOut }}>
       {props.children}
     </UserContext.Provider>
   );
