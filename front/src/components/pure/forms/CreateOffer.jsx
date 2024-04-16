@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import '../../../styles/styleDashboard.scss'
@@ -6,6 +6,7 @@ import '../../../styles/styleDashboard.scss'
 import { obtainProduct, sendOffer } from '../../../services/dashboardService';
 import ArrowLeftRight from '../ArrowLeftRight';
 import { LIST_PRODUCTS } from "../../../mocks/products.mocks";
+import { UserContext } from '../../../contexts/user.context';
 
 // Define a validation schema with yup
 const validationSchema = Yup.object().shape({
@@ -20,15 +21,21 @@ const initialValues = { typeOfCurrency: '', typeOfOffer: '', amountOfOffer: 0 };
 
 function CreateOffer() {
 
+    const { loggedUser } = useContext(UserContext);
+
     // Función para enviar el formulario
     const handleSubmit = (values, { setSubmitting }) => {
         // Aquí puedes manejar la lógica de envío del formulario
-        values.typeOfCurrency = findCrypto(values.typeOfCurrency)
-        if(sendOffer(JSON.stringify(values))){
+        const id = loggedUser.getId();
+        const crypto = findCrypto(values.typeOfCurrency).cryptoId;
+        const quantity = values.amountOfOffer;
+        const offer = { id, crypto, quantity }
+        if(sendOffer(offer)){
             alert('Request send correctly')
+        } else{
+            alert('Offer failed or wrong')
         }
-        alert(JSON.stringify(values));
-        values.typeOfCurrency = values.typeOfCurrency.productName
+        alert(JSON.stringify(offer));
         setSubmitting(false);
     };
 

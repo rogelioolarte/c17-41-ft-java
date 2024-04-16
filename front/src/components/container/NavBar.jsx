@@ -6,27 +6,23 @@ import Config from '../../assets/configuration.svg'
 import Logout from '../../assets/logout.svg'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { UserContext, UserProvider } from '../../contexts/user.context';
-import { useEffect, useState } from 'react'
-import { TOKEN_GET } from '../../config/token'
+import { useEffect } from 'react'
 
 function NavBar() {
 
-  const { user } = UserProvider(UserContext);
-  const [loggedIn, setLoggedIn] = useState(user || TOKEN_GET);
+  const {loggedUser, logUserOut } = UserProvider(UserContext);
   const navigate = useNavigate();
 
   function logout() {
-    sessionStorage.removeItem('token');
-    setLoggedIn(false);
+    logUserOut();
     navigate("/")
   }
 
   useEffect(() => {
-    setLoggedIn(user || TOKEN_GET);
-  }, [user]);
+  }, [loggedUser]);
 
   function changeButtons(){
-    if(loggedIn){
+    if(loggedUser){
       return (
         <div className='button-init' >
           <NavLink to="/wallet"  replace={true} >

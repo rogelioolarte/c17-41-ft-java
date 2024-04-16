@@ -8,8 +8,6 @@ const login = async (email, password, navigateToErrorPage) => {
       email: email,
       password: password,
     });
-    /** Token temporal */
-    sessionStorage.setItem('token', 'user')
     return user;
   } catch (error) {
     navigateToErrorPage(error.message);
@@ -28,17 +26,16 @@ const register = async (
   navigateToErrorPage
 ) => {
   try {
-    const newUser = await axios.post(
-      MAIN_API.length !== 0 ?  
+    const newUser = await axios.post( MAIN_API.length !== 0 ?  
         MAIN_API.concat(ROUTE_REGISTER) : 'https://reqres.in/api/register',
       {
-        firstName: firstName,
-        lastName: lastName,
-        idPassport: idPassport,
+        name: firstName,
+        lastname: lastName,
+        dni: idPassport,
         email: email,
         password: password,
         avatar: avatar,
-        account: account,
+        cbuDollar: account,
       }
     );
     return newUser;
