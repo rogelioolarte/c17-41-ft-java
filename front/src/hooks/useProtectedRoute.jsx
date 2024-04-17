@@ -7,14 +7,12 @@ function useProtectedRoute() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  console.log(loggedUser.currencyList);
-
   useEffect(() => {
     if (
       loggedUser.id !== "" &&
       (location.pathname === "/login" || location.pathname === "/register")
     ) {
-      navigate("/");
+      navigate("/dashboard");
     } else if (
       loggedUser.id === "" &&
       location.pathname !== "/login" &&

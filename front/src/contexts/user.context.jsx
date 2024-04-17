@@ -1,32 +1,38 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import { User } from "../models/user.class";
 import PropTypes from "prop-types";
 
 const UserContext = createContext();
 
 function UserProvider(props) {
-  const loggedUser = new User();
+  const [loggedUser, setLoggedUser] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? new User(JSON.parse(savedUser)) : new User();
+  });
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(loggedUser));
+  }, [loggedUser]);
+
+  console.log(localStorage.getItem("user"));
 
   const assignUserInfo = (user) => {
-    loggedUser.assignValues(
-      user.id,
-      user.firstName,
-      user.lastName,
-      user.idPassport,
-      user.email,
-      user.avatar,
-      user.account,
-      user.wallet,
-      user.currencyList
-    );
+    setLoggedUser((prevUser) => {
+      return {
+        ...prevUser,
+        ...user,
+      };
+    });
   };
 
   const logUserOut = () => {
-    loggedUser.assignValues("", "", "", "", "", "", "", null, null);
+    setLoggedUser(new User());
   };
 
+  console.log(loggedUser);
+
   return (
-    <UserContext.Provider value={{ loggedUser, assignUserInfo, logUserOut }} >
+    <UserContext.Provider value={{ loggedUser, assignUserInfo, logUserOut }}>
       {props.children}
     </UserContext.Provider>
   );

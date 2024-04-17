@@ -26,8 +26,7 @@ export const obtainProduct = async () => {
       }
       return response.json();
     })
-    .catch((error) => console.error(`Error: ${error}`))
-    .finally(() => console.info("Request of products finished"));
+    .catch((error) => console.error(`Error: ${error}`));
 };
 
 export const sendOffer = async (data, modo) => {
