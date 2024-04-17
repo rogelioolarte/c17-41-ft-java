@@ -1,8 +1,12 @@
+import NavBarB from "../components/container/NavBarB"
 import ConfigSection from "../components/container/configSection"
 
 function ConfigPage() {
   return (
-    <div><ConfigSection/></div>
+    <div>
+      <NavBarB/>
+      <ConfigSection/>
+    </div>
   )
 }
 
