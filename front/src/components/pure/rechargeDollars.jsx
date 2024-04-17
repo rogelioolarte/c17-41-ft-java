@@ -22,6 +22,7 @@ function RechargeDollars() {
 
   // Function to handle form submission
   const handleSubmit = async (values, { setSubmitting }) => {
+<<<<<<< HEAD
     try {
       const newData = await rechargeWallet(
         loggedUser.id,
@@ -38,6 +39,23 @@ function RechargeDollars() {
     } finally {
       setSubmitting(false);
     }
+=======
+    let newData = await rechargeWallet(loggedUser.id, values.amountToRecharge);
+    const user = {
+      id: loggedUser.id,
+      firstName: loggedUser.firstName,
+      lastName: loggedUser.lastName,
+      idPassport: loggedUser.idPassport,
+      email: loggedUser.email,
+      avatar: loggedUser.avatar,
+      account: loggedUser.account,
+      wallet: newData.wallet,
+      currencyList: loggedUser.currencyList,
+    };
+    assignUserInfo(user);
+    setSubmitting(false);
+    toggleNewRecharge();
+>>>>>>> 1bc4435114e604f8117236d28de1c101fe4149a0
   };
 
   useEffect(() => {}, [loggedUser]);
@@ -79,12 +97,7 @@ function RechargeDollars() {
               Recharge
             </button>
             {newRecharge ? (
-              <div>
-                <h4>You have {loggedUser.wallet}usd in your account</h4>
-              </div>
-            ) : (
-              ""
-            )}
+              <div className="note-init-form">Now, You have {loggedUser.wallet} USD in your personal wallet</div> ) : ("")}
           </Form>
         )}
       </Formik>

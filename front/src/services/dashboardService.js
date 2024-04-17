@@ -29,10 +29,10 @@ export const obtainProduct = async () => {
     .catch((error) => console.error(`Error: ${error}`));
 };
 
-export const sendOffer = async (data) => {
+export const sendOffer = async (data, modo) => {
   return await fetch(
     MAIN_API.length !== 0
-      ? MAIN_API.concat(ROUTE_BUY_CRYPTO)
+      ? MAIN_API.concat(ROUTE_BUY_CRYPTO).concat(modo)
       : "https://reqres.in/api/unknown/23",
     {
       method: "POST",
@@ -42,9 +42,7 @@ export const sendOffer = async (data) => {
       body: JSON.stringify(data),
     }
   )
-    .then((response) => {
-      response.ok ? true : false;
-    })
+    .then((response) => { response })
     .catch((error) => console.log(`Error: ${error}`))
     .finally(() => console.info("Sending offer finished"));
 };
@@ -92,7 +90,6 @@ export const rechargeWallet = async (id, amount) => {
         throw new Error("Error en la solicitud: " + response.status);
       }
       const data = await response.json();
-      console.log(data);
       return data;
     })
     .catch((error) => console.error(`Error: ${error}`))

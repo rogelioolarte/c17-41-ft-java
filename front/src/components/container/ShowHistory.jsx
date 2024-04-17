@@ -15,7 +15,7 @@ const ShowHistory = () => {
   const ListOfTransactions = transactions.length !== 0 ? transactions : [];
 
   useEffect(() => {
-    getTransactions(loggedUser.getId()).then((data) => {
+    getTransactions(loggedUser.id).then((data) => {
       data.length !== 0 ? setTransactions(data) : setTransactions([])
     })
   },[loggedUser])
