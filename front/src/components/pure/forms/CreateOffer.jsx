@@ -28,9 +28,15 @@ function CreateOffer() {
         const id = loggedUser.getId();
         const crypto = findCrypto(values.typeOfCurrency).cryptoId;
         const quantity = values.amountOfOffer / findCrypto(values.typeOfCurrency).currentPrice;
-        let newData = values.typeOfOffer === 'buy' ? sendOffer({ "userId": id, "currencyId": crypto, "quantity": quantity }, 'buy') : 
-            sendOffer({ "userId": id, "currencyId": crypto, "quantity": quantity }, 'sell')
-        alert(newData);
+        let newData = '';
+        if(values.typeOfOffer === 'buy'){
+            newData = sendOffer({ "userId": id, "currencyId": crypto, "quantity": quantity }, 'buy')
+        } else if(values.typeOfOffer === 'sell'){
+            newData = sendOffer({ "userId": id, "currencyId": crypto, "quantity": quantity }, 'sell')
+        } else {
+            newData = 'An error while send the offer has ocurred'
+        }
+        console.log(newData);
         setSubmitting(false);
     };
 
@@ -54,18 +60,17 @@ function CreateOffer() {
         <h1 className="title-create-offer" >Buy a Crypto Currency</h1>
         <Formik initialValues={initialValues} 
             validationSchema={validationSchema} onSubmit={handleSubmit}>
-        {({ values }) => (
+        {({ values, handleChange }) => (
             <Form className='forms-area-init' >
             <h1 className="title-form-init" >Select your currency</h1>
-            {listOfCurrencies.map((currency, index) => (
-                <div className="form-check form-check-inline" key={index}>
-                <Field className="form-check-input" type="radio" name="typeOfCurrency" 
-                    id={currency.productName} value={currency.productName} />
-                <label className="form-check-label" htmlFor={currency.productName}>
-                    { currency.productName }
-                </label>
-                </div>
-            ))}
+            <select name="typeOfCurrency" className="form-select" 
+                onChange={handleChange} 
+                value={values.typeOfCurrency}>
+                <option value="">Select your currency</option>
+                {listOfCurrencies.map((currency, index) => (
+                <option key={index} value={currency.productName}>{currency.productName} - {currency.currentPrice} USD per Crypto</option>
+                ))}
+            </select>
             <ErrorMessage name="typeOfCurrency" component="div" className="invalid-feedback" />
 
             <h1 className="title-form-init"  >Select the type of the offer</h1>

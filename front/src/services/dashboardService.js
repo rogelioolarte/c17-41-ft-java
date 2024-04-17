@@ -43,7 +43,10 @@ export const sendOffer = async (data, modo) => {
       body: JSON.stringify(data),
     }
   )
-    .then((response) => { response })
+    .then(async (response) =>  {  
+      const data = await response.json();
+      return data;
+    })
     .catch((error) => console.log(`Error: ${error}`))
     .finally(() => console.info("Sending offer finished"));
 };

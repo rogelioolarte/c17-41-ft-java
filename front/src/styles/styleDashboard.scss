@@ -10,6 +10,9 @@
         flex-direction: column;
         align-items: center;
     }
+    & * {
+        background-color: white;
+    }
 }
 
 /* Dashboard Panel */
