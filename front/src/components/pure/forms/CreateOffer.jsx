@@ -12,7 +12,8 @@ const validationSchema = Yup.object().shape({
     typeOfCurrency: Yup.string().required('El tipo de moneda es requerido'),
     typeOfOffer: Yup.string().required('El tipo de oferta es requerido'),
     amountOfOffer: Yup.number().required('La cantidad es requerida')
-        .positive('La cantidad debe ser positiva'),
+        .positive('La cantidad debe ser positiva')
+        .integer('La cantidad debe ser un número entero'),
 });
 // Inicial values for formik
 const initialValues = { typeOfCurrency: '', typeOfOffer: '', amountOfOffer: 0 };
@@ -25,9 +26,9 @@ function CreateOffer() {
     // Función para enviar el formulario
     const handleSubmit = (values, { setSubmitting }) => {
         // Aquí puedes manejar la lógica de envío del formulario
-        const id = loggedUser.getId();
+        const id = loggedUser.id;
         const crypto = findCrypto(values.typeOfCurrency).cryptoId;
-        const quantity = values.amountOfOffer / findCrypto(values.typeOfCurrency).currentPrice;
+        const quantity = values.amountOfOffer;
         let newData = '';
         if(values.typeOfOffer === 'buy'){
             newData = sendOffer({ "userId": id, "currencyId": crypto, "quantity": quantity }, 'buy')
@@ -36,7 +37,7 @@ function CreateOffer() {
         } else {
             newData = 'An error while send the offer has ocurred'
         }
-        console.log(newData);
+        console.log('se recibe de newData: ', newData);
         setSubmitting(false);
     };
 
@@ -87,16 +88,16 @@ function CreateOffer() {
             <ErrorMessage name="typeOfOffer" component="div" className="invalid-feedback" />
             <h1 className="title-form-init "  >Select the amount to offer</h1>
             <div className="mb-1 ">
-                <label htmlFor="amountOfOffer" className="form-label icon-init">USD</label>
+                <label htmlFor="amountOfOffer" className="form-label icon-init">
+                    { values.typeOfCurrency.length !== 0 ? findCrypto(values.typeOfCurrency).symbol : '' }
+                </label>
                 <Field type="number" className="form-control-sm" id="amountOfOffer" 
                     name="amountOfOffer" />
                 <ErrorMessage name="amountOfOffer" component="div" className="invalid-feedback" />
                 <ArrowLeftRight/>
                 <i>{ values.typeOfCurrency.length !== 0 ? 
-                        values.amountOfOffer / findCrypto(values.typeOfCurrency).currentPrice
-                    : values.amountOfOffer} 
-                    { values.typeOfCurrency.length !== 0 ? 
-                        findCrypto(values.typeOfCurrency).symbol : ''}</i>
+                        values.amountOfOffer * findCrypto(values.typeOfCurrency).currentPrice
+                    : ''} USD</i>
             </div>
             <button type="submit" className="btn btn-primary submit-button-init">Submit</button>
             </Form>

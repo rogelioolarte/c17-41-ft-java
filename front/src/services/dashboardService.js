@@ -42,8 +42,8 @@ export const sendOffer = async (data, modo) => {
       body: JSON.stringify(data),
     }
   )
-    .then(async (response) => {
-      const data = await response.json();
+    .then(async (response) =>  {  
+      const data = await response.text();
       return data;
     })
     .catch((error) => console.log(`Error: ${error}`))
