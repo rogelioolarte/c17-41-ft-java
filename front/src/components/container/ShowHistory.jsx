@@ -1,20 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import PerTransaction from '../pure/perTransaction';
-import { allData } from '../../mocks/transactions.mock';
 import { getTransactions } from '../../services/dashboardService';
+import '../../styles/styleShowHistory.scss';
+import { UserContext } from '../../contexts/user.context';
 
 const ShowHistory = () => {
+
+  const { loggedUser } = useContext(UserContext);
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 7;
 
   const [transactions, setTransactions] = useState([]);
-  const ListOfTransactions = transactions.length !== 0 ? transactions : allData;
+  const ListOfTransactions = transactions.length !== 0 ? transactions : [];
 
   useEffect(() => {
-    getTransactions().then((data) => {
+    getTransactions(loggedUser.getId()).then((data) => {
       data.length !== 0 ? setTransactions(data) : setTransactions([])
     })
-  },[])
+  },[loggedUser])
 
   // Calcular los índices de inicio y fin de los elementos a mostrar en la página actual
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -26,12 +30,12 @@ const ShowHistory = () => {
 
   return (
     <div className="p-3">
-      <h1 className="d-flex justify-content-center m-3 pt-3">Transaction History</h1>
+      <h1 className="d-flex justify-content-center m-3 pt-3 history-title">Transaction History</h1>
       <table className="table table-bordered">
         <thead>
           <tr>
             <th scope="col">Currency</th>
-            <th scope="col">Currency Price(Crypto)</th>
+            <th scope="col">Price of Crypto</th>
             <th scope="col">Quantity(USD)</th>
             <th scope="col">Date</th>
           </tr>

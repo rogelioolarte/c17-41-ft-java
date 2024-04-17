@@ -14,6 +14,7 @@ import CreateOffer from "./components/pure/forms/CreateOffer.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import { UserProvider } from "./contexts/user.context.jsx";
 import ConfigPage from "./pages/ConfigPage.jsx";
+import RechargeDollars from "./components/pure/rechargeDollars.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
         { path: "/dashboard", element: <Navigate to="/dashboard/offer" /> },
         { path: "/dashboard/offer", element: <CreateOffer /> },
         { path: "/dashboard/history", element: <ShowHistory /> },
+        { path: "/dashboard/recharge", element: <RechargeDollars /> },
       ]},
       { path: "/wallet", element: <WalletPage /> },
       { path: "/config", element: <ConfigPage /> },

@@ -29,13 +29,12 @@ function CreateOffer() {
         const id = loggedUser.getId();
         const crypto = findCrypto(values.typeOfCurrency).cryptoId;
         const quantity = values.amountOfOffer;
-        const offer = { id, crypto, quantity }
-        if(sendOffer(offer)){
+        if(sendOffer({ id, crypto, quantity })){
             alert('Request send correctly')
         } else{
             alert('Offer failed or wrong')
         }
-        alert(JSON.stringify(offer));
+        alert(JSON.stringify({ id, crypto, quantity }));
         setSubmitting(false);
     };
 
@@ -50,13 +49,13 @@ function CreateOffer() {
 
     const findCrypto = (typeCurrency) => {
         return  listOfCurrencies.length !== 0 ? 
-            listOfCurrencies.find(value => value.productName == typeCurrency)
+            listOfCurrencies.find(value => value.productName === typeCurrency)
             : 'Not found currency'
     }
 
     return (
         <div className='forms-adjust-init' >
-        <h1 className="title-create-offer" >Create an offer</h1>
+        <h1 className="title-create-offer" >Buy a Crypto Currency</h1>
         <Formik initialValues={initialValues} 
             validationSchema={validationSchema} onSubmit={handleSubmit}>
         {({ values }) => (
@@ -79,11 +78,11 @@ function CreateOffer() {
                     id="buy" value="buy" />
                 <label className="form-check-label" htmlFor="buy">Buy</label>
             </div>
-            <div className="form-check form-check-inline " >
+            {/* <div className="form-check form-check-inline " >
                 <Field className="form-check-input" type="radio" name="typeOfOffer" 
                     id="sell" value="sell" />
                 <label className="form-check-label" htmlFor="sell">Sell</label>
-            </div>
+            </div> */}
             <ErrorMessage name="typeOfOffer" component="div" className="invalid-feedback" />
             <h1 className="title-form-init "  >Select the amount to offer</h1>
             <div className="mb-1 ">

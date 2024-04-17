@@ -48,38 +48,3 @@ export const LIST_TRANSACTIONS = [
         "quantity": 3.45
     }
 ]
-// Generar 25 datos adicionales
-const generateRandomData = () => {
-    const newData = [];
-
-    for (let i = 0; i < 35; i++) {
-        // Generar datos aleatorios para cada transacción
-        const cryptoId = Math.floor(Math.random() * 100);
-        const productName = `Crypto ${cryptoId}`;
-        const symbol = `SYM${cryptoId}`;
-        const currentPrice = Math.random() * 10000;
-        const previousPrice = Math.random() * 10000;
-        const lastUpdate = new Date().toISOString();
-        const date = new Date().toISOString();
-        const quantity = Math.random() * 100;
-
-        // Agregar nueva transacción a la lista
-        newData.push({
-            product: {
-                cryptoId,
-                symbol,
-                productName,
-                currentPrice,
-                previousPrice,
-                lastUpdate
-            },
-            date,
-            quantity
-        });
-    }
-
-    return newData;
-};
-
-const additionalData = generateRandomData();
-export const allData = [...LIST_TRANSACTIONS, ...additionalData];

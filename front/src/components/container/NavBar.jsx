@@ -10,7 +10,7 @@ import { useEffect } from 'react'
 
 function NavBar() {
 
-  const {loggedUser, logUserOut } = UserProvider(UserContext);
+  const { logUserOut, loggerUserId } = UserProvider(UserContext);
   const navigate = useNavigate();
 
   function logout() {
@@ -19,10 +19,11 @@ function NavBar() {
   }
 
   useEffect(() => {
-  }, [loggedUser]);
+    console.log('user id:',loggerUserId)
+  }, [loggerUserId]);
 
   function changeButtons(){
-    if(loggedUser){
+    if(loggerUserId){
       return (
         <div className='button-init' >
           <NavLink to="/wallet"  replace={true} >
