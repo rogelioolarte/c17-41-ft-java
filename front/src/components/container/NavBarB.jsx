@@ -8,7 +8,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { UserContext, UserProvider } from '../../contexts/user.context';
 import { useEffect } from 'react'
 
-function NavBar() {
+function NavBarB() {
   const { logUserOut, loggedUser } = UserProvider(UserContext);
   const navigate = useNavigate();
 
@@ -20,25 +20,11 @@ function NavBar() {
   useEffect(() => {
   }, [loggedUser]);
 
-  function changeButtons() {
-    if (!loggedUser) {
-      return (
-        <div className='button-init' >
-          <NavLink to="/login" replace={true} >
-            <button type="button" className="btn btn-light btn-sm button-init-left ">
-              Log in
-            </button>
-          </NavLink>
-          <NavLink to="/register" replace={true} >
-            <button type="button" className="btn btn-info btn-sm button-init-right ">
-              Register
-            </button>
-          </NavLink>
-        </div>
-      );
-    }
-
-    return (
+  return (
+    <nav className='navbar navbar-expand-lg navbar-light navbare'>
+      <NavLink to="/" replace={true} className="color-background" >
+        <img className='logo' src={Logo} alt="Logo" />
+      </NavLink>
       <div className='button-init' >
         <NavLink to="/wallet" replace={true} >
           <img className='logo-nav' src={Wallet} alt="Wallet" />
@@ -53,17 +39,8 @@ function NavBar() {
           <img className='logo-nav' src={Logout} alt="Logout" />
         </NavLink>
       </div>
-    );
-  }
-
-  return (
-    <nav className='navbar navbar-expand-lg navbar-light navbare'>
-      <NavLink to="/" replace={true} className="color-background" >
-        <img className='logo' src={Logo} alt="Logo" />
-      </NavLink>
-      {changeButtons()}
     </nav>
   );
 }
 
-export default NavBar;
+export default NavBarB;

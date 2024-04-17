@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import '../styles/styleHome.scss'
+import NavBarA from '../components/container/NavBarA';
 const HomePage = () => {
   return (
+    <div>
+    <NavBarA/>
     <div className="home">
       <h1  className="home-title">Trade Bitcoin with PAYZO</h1> 
       <div className='home-banner'>
@@ -18,6 +21,8 @@ const HomePage = () => {
         </Link>
       
     </div>
+    </div>
+    
   );
 };
 
