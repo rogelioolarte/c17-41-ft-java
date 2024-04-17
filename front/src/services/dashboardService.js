@@ -42,7 +42,9 @@ export const sendOffer = async (data, modo) => {
       body: JSON.stringify(data),
     }
   )
-    .then((response) => { response })
+    .then((response) => {
+      response;
+    })
     .catch((error) => console.log(`Error: ${error}`))
     .finally(() => console.info("Sending offer finished"));
 };

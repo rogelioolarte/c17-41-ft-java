@@ -5,16 +5,15 @@ import PropTypes from "prop-types";
 const UserContext = createContext();
 
 function UserProvider(props) {
-  const [loggedUser, setLoggedUser] = useState(() => {
-    const savedUser = localStorage.getItem("user");
-    return savedUser ? new User(JSON.parse(savedUser)) : new User();
-  });
+  const savedUser = new User(JSON.parse(window.localStorage.getItem("user")));
+
+  const [loggedUser, setLoggedUser] = useState(savedUser || new User());
 
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(loggedUser));
+    window.localStorage.setItem("user", JSON.stringify(loggedUser));
   }, [loggedUser]);
 
-  console.log(localStorage.getItem("user"));
+  console.log(loggedUser);
 
   const assignUserInfo = (user) => {
     setLoggedUser((prevUser) => {

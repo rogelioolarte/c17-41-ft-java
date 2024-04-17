@@ -1,13 +1,11 @@
-import NavBarB from "../components/container/NavBarB"
-import ConfigSection from "../components/container/configSection"
+import ConfigSection from "../components/container/configSection";
 
 function ConfigPage() {
   return (
     <div>
-      <NavBarB/>
-      <ConfigSection/>
+      <ConfigSection />
     </div>
-  )
+  );
 }
 
-export default ConfigPage
+export default ConfigPage;
