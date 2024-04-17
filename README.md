@@ -37,8 +37,6 @@ Utilizamos las siguientes tecnologias para realizar el desarrollo.
 | Participante     | Rol       | Linkedin        |
 |------------------|-----------|-----------------|
 | Lionel Staricoff | Backend   | https://www.linkedin.com/in/lionel-staricoff |
-| Cristian Arevalo | Backend   | https://www.linkedin.com/in/crisare-dev/ |
-| Gonzalo Vallone  | Backend   | https://www.linkedin.com/in/gonzalovallone/ |
 | Ronan Filloy     | Frontend  | https://www.linkedin.com/in/ronan-filloy-b5266a1a7/ |
 | Rogelio Olarte   | Frontend  | https://www.linkedin.com/in/rogelio-olarte/ |
 | Susan Sandoval   |    QA     | https://www.linkedin.com/in/mariasusanasandoval/ |
