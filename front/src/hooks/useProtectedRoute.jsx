@@ -7,7 +7,7 @@ function useProtectedRoute() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  console.log(loggedUser.id);
+  console.log(loggedUser.currencyList);
 
   useEffect(() => {
     if (

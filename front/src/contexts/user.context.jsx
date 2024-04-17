@@ -9,7 +9,7 @@ function UserProvider(props) {
 
   const loggerUserId = () => {
     return loggedUser.id;
-  }
+  };
 
   const assignUserInfo = (user) => {
     loggedUser.assignValues(
@@ -20,8 +20,8 @@ function UserProvider(props) {
       user.email,
       user.avatar,
       user.account,
-      null,
-      null
+      user.wallet,
+      user.currencyList
     );
   };
 
@@ -30,7 +30,9 @@ function UserProvider(props) {
   };
 
   return (
-    <UserContext.Provider value={{ loggedUser, loggerUserId, assignUserInfo, logUserOut }}>
+    <UserContext.Provider
+      value={{ loggedUser, loggerUserId, assignUserInfo, logUserOut }}
+    >
       {props.children}
     </UserContext.Provider>
   );

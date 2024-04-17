@@ -54,7 +54,7 @@ export class User {
     this.currencyList = currencyList;
   }
 
-  getId(){
+  getId() {
     return this.id;
   }
 }

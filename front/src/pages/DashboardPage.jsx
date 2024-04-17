@@ -5,6 +5,7 @@ import "../styles/styleDashboard.scss";
 
 function DashboardPage() {
   useProtectedRoute();
+
   return (
     <div className="dashboard-init">
       <DashboardPannel></DashboardPannel>
