@@ -37,8 +37,8 @@ const RegisterFormik = () => {
       values.account,
       navigateToErrorPage
     );
-    if (newUser) {
-      assignUserInfo(newUser);
+    if (newUser.data) {
+      assignUserInfo(newUser.data);
       navigate("/dashboard");
     }
   };

@@ -7,6 +7,10 @@ const UserContext = createContext();
 function UserProvider(props) {
   const loggedUser = new User();
 
+  const loggerUserId = () => {
+    return loggedUser.id;
+  }
+
   const assignUserInfo = (user) => {
     loggedUser.assignValues(
       user.id,
@@ -26,7 +30,7 @@ function UserProvider(props) {
   };
 
   return (
-    <UserContext.Provider value={{ loggedUser, assignUserInfo, logUserOut }}>
+    <UserContext.Provider value={{ loggedUser, loggerUserId, assignUserInfo, logUserOut }}>
       {props.children}
     </UserContext.Provider>
   );

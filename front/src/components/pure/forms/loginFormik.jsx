@@ -23,8 +23,8 @@ const LoginFormik = () => {
       values.password,
       navigateToErrorPage
     );
-    if (user) {
-      assignUserInfo(user);
+    if (user.data) {
+      assignUserInfo(user.data);
       navigate("/dashboard");
     }
   };

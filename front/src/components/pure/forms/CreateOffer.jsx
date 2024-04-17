@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import '../../../styles/styleDashboard.scss'
@@ -6,6 +6,7 @@ import '../../../styles/styleDashboard.scss'
 import { obtainProduct, sendOffer } from '../../../services/dashboardService';
 import ArrowLeftRight from '../ArrowLeftRight';
 import { LIST_PRODUCTS } from "../../../mocks/products.mocks";
+import { UserContext } from '../../../contexts/user.context';
 
 // Define a validation schema with yup
 const validationSchema = Yup.object().shape({
@@ -20,15 +21,20 @@ const initialValues = { typeOfCurrency: '', typeOfOffer: '', amountOfOffer: 0 };
 
 function CreateOffer() {
 
+    const { loggedUser } = useContext(UserContext);
+
     // Función para enviar el formulario
     const handleSubmit = (values, { setSubmitting }) => {
         // Aquí puedes manejar la lógica de envío del formulario
-        values.typeOfCurrency = findCrypto(values.typeOfCurrency)
-        if(sendOffer(JSON.stringify(values))){
+        const id = loggedUser.getId();
+        const crypto = findCrypto(values.typeOfCurrency).cryptoId;
+        const quantity = values.amountOfOffer;
+        if(sendOffer({ id, crypto, quantity })){
             alert('Request send correctly')
+        } else{
+            alert('Offer failed or wrong')
         }
-        alert(JSON.stringify(values));
-        values.typeOfCurrency = values.typeOfCurrency.productName
+        alert(JSON.stringify({ id, crypto, quantity }));
         setSubmitting(false);
     };
 
@@ -43,13 +49,13 @@ function CreateOffer() {
 
     const findCrypto = (typeCurrency) => {
         return  listOfCurrencies.length !== 0 ? 
-            listOfCurrencies.find(value => value.productName == typeCurrency)
+            listOfCurrencies.find(value => value.productName === typeCurrency)
             : 'Not found currency'
     }
 
     return (
         <div className='forms-adjust-init' >
-        <h1 className="title-create-offer" >Create an offer</h1>
+        <h1 className="title-create-offer" >Buy a Crypto Currency</h1>
         <Formik initialValues={initialValues} 
             validationSchema={validationSchema} onSubmit={handleSubmit}>
         {({ values }) => (
@@ -72,11 +78,11 @@ function CreateOffer() {
                     id="buy" value="buy" />
                 <label className="form-check-label" htmlFor="buy">Buy</label>
             </div>
-            <div className="form-check form-check-inline " >
+            {/* <div className="form-check form-check-inline " >
                 <Field className="form-check-input" type="radio" name="typeOfOffer" 
                     id="sell" value="sell" />
                 <label className="form-check-label" htmlFor="sell">Sell</label>
-            </div>
+            </div> */}
             <ErrorMessage name="typeOfOffer" component="div" className="invalid-feedback" />
             <h1 className="title-form-init "  >Select the amount to offer</h1>
             <div className="mb-1 ">

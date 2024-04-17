@@ -53,4 +53,8 @@ export class User {
     this.wallet = wallet;
     this.currencyList = currencyList;
   }
+
+  getId(){
+    return this.id;
+  }
 }

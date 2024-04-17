@@ -1,9 +1,10 @@
-import { Currency } from "./currency.class";
-
 export class Transaction {
-    product = Currency;
-    date = '';
+    transactionId = 0;
+    currency = '';
+    type = '';
     quantity = 0;
+    total = 0;
+    transactionDate = Date;
 
     /**
      * Create a transaction
@@ -11,9 +12,12 @@ export class Transaction {
      * @param {*} date Date time of the transsaction
      * @param {*} quantity Quantity of the transaction
      */
-    constructor(product, date, quantity){
-        this.product = product;
-        this.date = date;
+    constructor(transactionId, currency, type, quantity, total, transactionDate){
+        this.transactionId = transactionId;
+        this.currency = currency;
+        this.type = type;
         this.quantity = quantity;
+        this.total = total;
+        this.transactionDate = transactionDate;
     }
 }
