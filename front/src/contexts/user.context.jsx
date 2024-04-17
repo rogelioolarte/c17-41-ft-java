@@ -10,15 +10,12 @@ function UserProvider(props) {
     return savedUser ? new User(JSON.parse(savedUser)) : new User();
   });
 
-<<<<<<< HEAD
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(loggedUser));
   }, [loggedUser]);
 
   console.log(localStorage.getItem("user"));
 
-=======
->>>>>>> 1bc4435114e604f8117236d28de1c101fe4149a0
   const assignUserInfo = (user) => {
     setLoggedUser((prevUser) => {
       return {
@@ -35,11 +32,7 @@ function UserProvider(props) {
   console.log(loggedUser);
 
   return (
-<<<<<<< HEAD
     <UserContext.Provider value={{ loggedUser, assignUserInfo, logUserOut }}>
-=======
-    <UserContext.Provider value={{ loggedUser, assignUserInfo, logUserOut }} >
->>>>>>> 1bc4435114e604f8117236d28de1c101fe4149a0
       {props.children}
     </UserContext.Provider>
   );
