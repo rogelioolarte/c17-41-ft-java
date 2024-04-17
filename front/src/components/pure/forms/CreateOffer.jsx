@@ -5,7 +5,6 @@ import '../../../styles/styleDashboard.scss'
 
 import { obtainProduct, sendOffer } from '../../../services/dashboardService';
 import ArrowLeftRight from '../ArrowLeftRight';
-import { LIST_PRODUCTS } from "../../../mocks/products.mocks";
 import { UserContext } from '../../../contexts/user.context';
 
 // Define a validation schema with yup
@@ -28,18 +27,14 @@ function CreateOffer() {
         // Aquí puedes manejar la lógica de envío del formulario
         const id = loggedUser.getId();
         const crypto = findCrypto(values.typeOfCurrency).cryptoId;
-        const quantity = values.amountOfOffer;
-        if(sendOffer({ id, crypto, quantity })){
-            alert('Request send correctly')
-        } else{
-            alert('Offer failed or wrong')
-        }
-        alert(JSON.stringify({ id, crypto, quantity }));
+        const quantity = values.amountOfOffer / findCrypto(values.typeOfCurrency).currentPrice;
+        let newData = sendOffer({ "userId": id, "currencyId": crypto, "quantity": quantity })
+        alert(newData);
         setSubmitting(false);
     };
 
     const [products, setProducts] = useState([]);
-    let listOfCurrencies = products.length !==0 ? products : LIST_PRODUCTS;
+    let listOfCurrencies = products.length !==0 ? products : [];
 
     useEffect(() => {
         obtainProduct().then((data)=> {

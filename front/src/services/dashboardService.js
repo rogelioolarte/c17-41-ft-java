@@ -43,9 +43,7 @@ export const sendOffer = async (data) => {
       body: JSON.stringify(data),
     }
   )
-    .then((response) => {
-      response.ok ? true : false;
-    })
+    .then((response) => { response })
     .catch((error) => console.log(`Error: ${error}`))
     .finally(() => console.info("Sending offer finished"));
 };
@@ -93,7 +91,6 @@ export const rechargeWallet = async (id, amount) => {
         throw new Error("Error en la solicitud: " + response.status);
       }
       const data = await response.json();
-      console.log(data);
       return data;
     })
     .catch((error) => console.error(`Error: ${error}`))

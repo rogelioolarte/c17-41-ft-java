@@ -34,7 +34,6 @@ function RechargeDollars() {
       wallet: newData.wallet,
       currencyList: loggedUser.currencyList,
     };
-
     assignUserInfo(user);
     setSubmitting(false);
     toggleNewRecharge();
@@ -79,12 +78,7 @@ function RechargeDollars() {
               Recharge
             </button>
             {newRecharge ? (
-              <div>
-                <h4>You have {loggedUser.wallet}usd in your account</h4>
-              </div>
-            ) : (
-              ""
-            )}
+              <div className="note-init-form">Now, You have {loggedUser.wallet} USD in your personal wallet</div> ) : ("")}
           </Form>
         )}
       </Formik>
