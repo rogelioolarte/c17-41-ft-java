@@ -18,7 +18,6 @@ function WalletSection() {
     obtainProduct().then((data)=> {
       data.length !== 0 ? setAsset(data) : setAsset([])
     })
-    console.log(loggedUser.getId())
     getTransactions(loggedUser.id).then((data) => {
       data.length !== 0 ? setTransactions(data) : setTransactions([])
     })

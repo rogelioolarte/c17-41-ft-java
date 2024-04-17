@@ -63,7 +63,7 @@ function CreateOffer() {
         {({ values, handleChange }) => (
             <Form className='forms-area-init' >
             <h1 className="title-form-init" >Select your currency</h1>
-            <select name="typeOfCurrency" className="form-select" 
+            <select name="typeOfCurrency" className="form-select create-offer" 
                 onChange={handleChange} 
                 value={values.typeOfCurrency}>
                 <option value="">Select your currency</option>
