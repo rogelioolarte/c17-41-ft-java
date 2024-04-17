@@ -8,7 +8,7 @@ USE playzo;
 
 DROP TABLE IF EXISTS currency;
 
-CREATE TABLE `currency` (
+CREATE TABLE currency (
   crypto_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   product_name varchar(255),
   symbol varchar(255),
@@ -60,7 +60,7 @@ INSERT INTO users_seq (next_val) VALUES ( 1);
 
 DROP TABLE IF EXISTS transactions;
 
-CREATE TABLE `transactions` (
+CREATE TABLE transactions (
   transaction_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id BIGINT,
   crypto_id BIGINT,
@@ -69,8 +69,8 @@ CREATE TABLE `transactions` (
   price_per_unit decimal(18,2) NOT NULL,
   total decimal(18,2) NOT NULL,
   transaction_date date NOT NULL,
-FOREIGN KEY (user_id) REFERENCES Users (user_id),
-FOREIGN KEY (crypto_id) REFERENCES currency (crypto_id)
+FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (crypto_id) REFERENCES currency(crypto_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS `transactions_seq`;
