@@ -22,22 +22,22 @@ function RechargeDollars() {
 
   // Function to handle form submission
   const handleSubmit = async (values, { setSubmitting }) => {
-    let newData = await rechargeWallet(loggedUser.id, values.amountToRecharge);
-    const user = {
-      id: loggedUser.id,
-      firstName: loggedUser.firstName,
-      lastName: loggedUser.lastName,
-      idPassport: loggedUser.idPassport,
-      email: loggedUser.email,
-      avatar: loggedUser.avatar,
-      account: loggedUser.account,
-      wallet: newData.wallet,
-      currencyList: loggedUser.currencyList,
-    };
-
-    assignUserInfo(user);
-    setSubmitting(false);
-    toggleNewRecharge();
+    try {
+      const newData = await rechargeWallet(
+        loggedUser.id,
+        values.amountToRecharge
+      );
+      const user = {
+        ...loggedUser,
+        wallet: newData.wallet,
+      };
+      assignUserInfo(user);
+      if (!newRecharge) toggleNewRecharge();
+    } catch (error) {
+      console.error("Error recharging wallet:", error);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   useEffect(() => {}, [loggedUser]);

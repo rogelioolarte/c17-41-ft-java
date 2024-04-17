@@ -1,12 +1,12 @@
-import ConfigFormik from "./forms/ConfigFormik"
+import ConfigFormik from "./forms/configFormik";
 
 function ConfigSection() {
   return (
     <div>
-        ConfigSection
-        <ConfigFormik/>
+      ConfigSection
+      <ConfigFormik />
     </div>
-  )
+  );
 }
 
-export default ConfigSection
+export default ConfigSection;
