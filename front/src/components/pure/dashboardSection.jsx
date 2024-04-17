@@ -1,16 +1,14 @@
-import { Outlet } from 'react-router-dom';
-import '../../styles/styleDashboard.scss'
+import { Outlet } from "react-router-dom";
+import "../../styles/styleDashboard.scss";
 
 const DashboardSection = () => {
-    return (
-        <div className='dashboard-section-init' >
-            <Outlet/>
-        </div>
-    );
+  return (
+    <div className="dashboard-section-init">
+      <Outlet />
+    </div>
+  );
 };
 
-DashboardSection.propTypes = {
-
-};
+DashboardSection.propTypes = {};
 
 export default DashboardSection;

@@ -19,10 +19,10 @@ function PerTransaction({ data }) {
 
   return (
     <tr>
-      <td>{ data.product.productName }</td>
-      <td>{ data.product.currentPrice }</td>
-      <td>{ data.quantity }</td>
-      <td>{ formatDate(data.date) }</td>
+      <td>{ data.currency}</td>
+      <td>{ data.total / data.quantity}</td>
+      <td>{ (data.type === 'buy') ? '+':'-' } { data.total }</td>
+      <td>{ formatDate(data.transactionDate) }</td>
     </tr>
   )
 }

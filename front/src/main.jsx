@@ -12,8 +12,9 @@ import WalletPage from "./pages/WalletPage.jsx";
 import ShowHistory from "./components/container/ShowHistory.jsx";
 import CreateOffer from "./components/pure/forms/CreateOffer.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
-import ConfigSection from "./components/container/configSection.jsx";
 import { UserProvider } from "./contexts/user.context.jsx";
+import ConfigPage from "./pages/ConfigPage.jsx";
+import RechargeDollars from "./components/pure/rechargeDollars.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,11 +23,12 @@ const router = createBrowserRouter([
       { path: "/home", element: <HomePage /> },
       { path: "/dashboard", element: <DashboardPage />, children: [
         { path: "/dashboard", element: <Navigate to="/dashboard/offer" /> },
-        { path: "/dashboard/offer", element: <CreateOffer />},
+        { path: "/dashboard/offer", element: <CreateOffer /> },
         { path: "/dashboard/history", element: <ShowHistory /> },
+        { path: "/dashboard/recharge", element: <RechargeDollars /> },
       ]},
       { path: "/wallet", element: <WalletPage /> },
-      { path: "/config", element: <ConfigSection /> },
+      { path: "/config", element: <ConfigPage /> },
     ] },
   { path: "/login", element: <LoginPage /> },
   { path: "/register", element: <RegisterPage /> },

@@ -6,47 +6,25 @@ import Config from '../../assets/configuration.svg'
 import Logout from '../../assets/logout.svg'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { UserContext, UserProvider } from '../../contexts/user.context';
-import { useEffect, useState } from 'react'
-import { TOKEN_GET } from '../../config/token'
+import { useEffect } from 'react'
 
 function NavBar() {
-
-  const { user } = UserProvider(UserContext);
-  const [loggedIn, setLoggedIn] = useState(user || TOKEN_GET);
+  const { logUserOut, loggedUser } = UserProvider(UserContext);
   const navigate = useNavigate();
 
   function logout() {
-    sessionStorage.removeItem('token');
-    setLoggedIn(false);
-    navigate("/")
+    logUserOut();
+    navigate("/login");
   }
 
   useEffect(() => {
-    setLoggedIn(user || TOKEN_GET);
-  }, [user]);
+  }, [loggedUser]);
 
-  function changeButtons(){
-    if(loggedIn){
+  function changeButtons() {
+    if (!loggedUser) {
       return (
         <div className='button-init' >
-          <NavLink to="/wallet"  replace={true} >
-            <img className='logo-nav' src={Wallet} alt="Wallet" />
-          </NavLink>
-          <NavLink to="/dashboard" replace={true} >
-            <img className='logo-nav' src={Dashboard} alt="Dashboard" />
-          </NavLink>
-          <NavLink to="/config" replace={true} >
-            <img className='logo-nav' src={Config} alt="Config" />
-          </NavLink>
-          <NavLink to="/" replace={true} onClick={logout} >
-            <img className='logo-nav' src={Logout} alt="Logout" />
-          </NavLink>
-        </div>
-      )
-    } else {
-      return (
-        <div className='button-init' >
-          <NavLink to="/login"  replace={true} >
+          <NavLink to="/login" replace={true} >
             <button type="button" className="btn btn-light btn-sm button-init-left ">
               Log in
             </button>
@@ -57,18 +35,35 @@ function NavBar() {
             </button>
           </NavLink>
         </div>
-      )
+      );
     }
+
+    return (
+      <div className='button-init' >
+        <NavLink to="/wallet" replace={true} >
+          <img className='logo-nav' src={Wallet} alt="Wallet" />
+        </NavLink>
+        <NavLink to="/dashboard" replace={true} >
+          <img className='logo-nav' src={Dashboard} alt="Dashboard" />
+        </NavLink>
+        <NavLink to="/config" replace={true} >
+          <img className='logo-nav' src={Config} alt="Config" />
+        </NavLink>
+        <NavLink to="/" replace={true} onClick={logout} >
+          <img className='logo-nav' src={Logout} alt="Logout" />
+        </NavLink>
+      </div>
+    );
   }
 
   return (
-    <nav  className='navbar navbar-expand-lg navbar-light navbare'>
-      <NavLink to="/"  replace={true} className="color-background" >
+    <nav className='navbar navbar-expand-lg navbar-light navbare'>
+      <NavLink to="/" replace={true} className="color-background" >
         <img className='logo' src={Logo} alt="Logo" />
       </NavLink>
-      { changeButtons() }
+      {changeButtons()}
     </nav>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;

@@ -54,7 +54,7 @@
     justify-content: center;
     align-items: center;
     font-weight: 300;
-    font-size: 3rem;
+    font-size: 300%;
     text-decoration: underline;
 }
 .title-form-init {
@@ -76,4 +76,19 @@
 .icon-arrow {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+}
+
+.container-recharge {
+    position: relative;
+}
+.note-init {
+    margin-left: 5%;
+    position: absolute;
+    bottom: 0;
+}
+.note-init-form {
+    margin-left: 20%;
+    position: absolute;
+    margin-right: 10%;
+    bottom: 35%;
 }

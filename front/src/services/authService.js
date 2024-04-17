@@ -1,15 +1,17 @@
 import axios from "axios";
-import { MAIN_API, ROUTE_LOGIN, ROUTE_REGISTER } from '../config/api_routes'
+import { MAIN_API, ROUTE_LOGIN, ROUTE_REGISTER } from "../config/api_routes";
 
 const login = async (email, password, navigateToErrorPage) => {
   try {
-    const user = await axios.post(MAIN_API.length !== 0 ?  
-        MAIN_API.concat(ROUTE_LOGIN) : 'https://reqres.in/api/login', {
-      email: email,
-      password: password,
-    });
-    /** Token temporal */
-    sessionStorage.setItem('token', 'user')
+    const user = await axios.post(
+      MAIN_API.length !== 0
+        ? MAIN_API.concat(ROUTE_LOGIN)
+        : "https://reqres.in/api/login",
+      {
+        email: email,
+        password: password,
+      }
+    );
     return user;
   } catch (error) {
     navigateToErrorPage(error.message);
@@ -29,24 +31,19 @@ const register = async (
 ) => {
   try {
     const newUser = await axios.post(
-      MAIN_API.length !== 0 ?  
-        MAIN_API.concat(ROUTE_REGISTER) : 'https://reqres.in/api/register',
-      /* {
-        firstName: firstName,
-        lastName: lastName,
-        idPassport: idPassport,
+      MAIN_API.length !== 0
+        ? MAIN_API.concat(ROUTE_REGISTER)
+        : "https://reqres.in/api/register",
+      {
+        name: firstName,
+        lastname: lastName,
+        dni: idPassport,
         email: email,
         password: password,
         avatar: avatar,
-        account: account,
-      } */
-      {
-        "email": "eve.holt@reqres.in",
-        "password": "pistol"
+        cbuDollar: account,
       }
     );
-    /** Token temporal */
-    sessionStorage.setItem('token', 'user')
     return newUser;
   } catch (error) {
     navigateToErrorPage(error.message);

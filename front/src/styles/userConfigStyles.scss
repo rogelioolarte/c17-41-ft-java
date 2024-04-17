@@ -45,7 +45,14 @@
             border: 1px solid black;
             border-radius: 0.2rem;
             padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
         }
+    }
+
+    .error-message {
+        font-size: 0.6rem;
+        color: red;
+        flex-wrap: wrap;
     }
 
     .card-footer {
@@ -73,5 +80,22 @@
             box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.4);
             transform: translateY(-3px);
         }
+    }
+}
+
+@media(max-width: 768px) {
+    .config-section .config-form {
+        flex-wrap: nowrap;
+        height: fit-content;
+    }
+
+    .config-section .card-footer .config-update-button {
+        margin-top: 2vh;
+    }
+}
+
+@media(max-width: 940px) {
+    .config-section .card-footer .config-update-button {
+        font-size: 0.8rem;
     }
 }

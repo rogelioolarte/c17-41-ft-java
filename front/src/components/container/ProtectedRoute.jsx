@@ -22,7 +22,6 @@ function ProtectedRoute({  redirectTo, element }) {
 ProtectedRoute.propTypes = {
     redirectTo: PropTypes.element.isRequired,
     element: PropTypes.element.isRequired,
-    
 }
 
 export default ProtectedRoute
