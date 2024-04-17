@@ -30,10 +30,10 @@ export const obtainProduct = async () => {
     .finally(() => console.info("Request of products finished"));
 };
 
-export const sendOffer = async (data) => {
+export const sendOffer = async (data, modo) => {
   return await fetch(
     MAIN_API.length !== 0
-      ? MAIN_API.concat(ROUTE_BUY_CRYPTO)
+      ? MAIN_API.concat(ROUTE_BUY_CRYPTO).concat(modo)
       : "https://reqres.in/api/unknown/23",
     {
       method: "POST",

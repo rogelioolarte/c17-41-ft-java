@@ -28,7 +28,8 @@ function CreateOffer() {
         const id = loggedUser.getId();
         const crypto = findCrypto(values.typeOfCurrency).cryptoId;
         const quantity = values.amountOfOffer / findCrypto(values.typeOfCurrency).currentPrice;
-        let newData = sendOffer({ "userId": id, "currencyId": crypto, "quantity": quantity })
+        let newData = values.typeOfOffer === 'buy' ? sendOffer({ "userId": id, "currencyId": crypto, "quantity": quantity }, 'buy') : 
+            sendOffer({ "userId": id, "currencyId": crypto, "quantity": quantity }, 'sell')
         alert(newData);
         setSubmitting(false);
     };
@@ -73,11 +74,11 @@ function CreateOffer() {
                     id="buy" value="buy" />
                 <label className="form-check-label" htmlFor="buy">Buy</label>
             </div>
-            {/* <div className="form-check form-check-inline " >
+            <div className="form-check form-check-inline " >
                 <Field className="form-check-input" type="radio" name="typeOfOffer" 
                     id="sell" value="sell" />
                 <label className="form-check-label" htmlFor="sell">Sell</label>
-            </div> */}
+            </div>
             <ErrorMessage name="typeOfOffer" component="div" className="invalid-feedback" />
             <h1 className="title-form-init "  >Select the amount to offer</h1>
             <div className="mb-1 ">
