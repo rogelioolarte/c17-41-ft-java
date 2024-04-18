@@ -113,14 +113,14 @@ function CreateOffer() {
     return (
         <div className='forms-adjust-init'>
             <h1 className="title-create-offer">Buy a Crypto Currency</h1>
-            { products.length > 0 ? <Formik 
+            { products.length !== 0 ? <Formik 
                 initialValues={initialValues} 
                 validationSchema={validationSchema} 
                 onSubmit={handleSubmit}
             >
                 {({ values, handleChange }) => (
                     <Form className='forms-area-init'>
-                        { renderCurrencySelect({ values, handleChange })}
+                        { renderCurrencySelect({ values, handleChange }) }
                         {renderOfferTypeRadio()}
                         {renderAmountInput({ values })}
                         <button type="submit" className="btn btn-primary submit-button-init">Submit</button>
