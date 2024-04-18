@@ -21,7 +21,7 @@ function PerTransaction({ data }) {
     <tr>
       <td>{ data.currency}</td>
       <td>{ data.total / data.quantity}</td>
-      <td>{ (data.type === 'buy') ? '-':'+' } { data.total }</td>
+      <td>{ (data.type === 'buy') ? '+':'-' } { data.total }</td>
       <td>{ formatDate(data.transactionDate) }</td>
     </tr>
   )

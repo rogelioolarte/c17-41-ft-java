@@ -76,7 +76,7 @@ export const getTransactions = async (id) => {
 export const rechargeWallet = async (id, amount) => {
   return await fetch(
     MAIN_API.length !== 0
-      ? MAIN_API.concat(ROUTE_RECHARGE_WALLET).concat(id+10)
+      ? MAIN_API.concat(ROUTE_RECHARGE_WALLET).concat(id)
       : `https://reqres.in/api/unknown/23`,
     {
       method: "PATCH",

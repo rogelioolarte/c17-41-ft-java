@@ -38,11 +38,12 @@ function CreateOffer() {
         assignUserInfo({ ...loggedUser, wallet, currencyList, lastMessage: message });
     };
 
-    const handleSubmit = (values, { setSubmitting }) => {
+    const handleSubmit = async (values, { setSubmitting }) => {
         const id = loggedUser.id;
         const crypto = findCrypto(values.typeOfCurrency).cryptoId;
         const quantity = values.amountOfOffer;
-        let newData = sendOffer({ "userId": id, "currencyId": crypto, "quantity": quantity }, values.typeOfOffer)
+        let newData = await sendOffer({ "userId": id, "currencyId": crypto, "quantity": quantity }, values.typeOfOffer)
+        console.log(newData)
         if (newData.wallet >= 0) {
             managedOfferResponse(newData.wallet, 
                 newData.currencyDtoList, 
@@ -104,7 +105,7 @@ function CreateOffer() {
                     {values.typeOfCurrency.length !== 0 ? 
                         (values.amountOfOffer * findCrypto(values.typeOfCurrency).currentPrice).toFixed(2)
                         : ''
-                    } USD
+                    } {' '} USD
                 </i>
             </div>
         </>
