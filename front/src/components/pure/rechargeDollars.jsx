@@ -80,7 +80,7 @@ function RechargeDollars() {
             </button>
             {newRecharge ? (
               <div className="note-init-form">
-                Now, You have {loggedUser.wallet} USD in your personal wallet
+                You now have {loggedUser.wallet} USD in your personal wallet
               </div>
             ) : (
               ""
