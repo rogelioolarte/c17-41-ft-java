@@ -6,21 +6,33 @@ import userSchema from "../../../models/user.schema";
 import { register } from "../../../services/authService";
 import Logo from "../../../assets/payzo.svg";
 import "../../../styles/loginRegisterForms.scss";
+import person from "../../../assets/person";
+import person_blue from "../../../assets/person_blue";
+import person_green from "../../../assets/person_green";
+import person_purple from "../../../assets/person_purple";
 
 const RegisterFormik = () => {
   const { assignUserInfo } = useContext(UserContext);
   const navigate = useNavigate();
+  const [withFile, setWithFile] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState(null);
+  const imageOptions = [
+    { value: person.src, label: "Person" },
+    { value: person_blue.src, label: "Person Blue" },
+    { value: person_purple.src, label: "Person Purple"  },
+    { value: person_green.src, label: "Person Green" },
+  ];
 
   const initialValues = { firstName: "", lastName: "", idPassport: "",
     email: "", password: "", avatar: "", account: "", };
+
 
   const navigateToErrorPage = (error) => {
     navigate(`/error?message=${encodeURIComponent(error)}`);
   };
 
   const handleSubmit = async (values) => {
-    values.avatar = avatarPreview;
+    values.avatar = withFile ? avatarPreview : values.avatar;
     const newUser = await register( values.firstName, values.lastName, values.idPassport,
       values.email, values.password, values.avatar , values.account, navigateToErrorPage
     );
@@ -30,19 +42,22 @@ const RegisterFormik = () => {
     }
   };
 
-  const handleAvatarChange = (event) => {
-    const file = event.currentTarget.files[0];
-    if (file) {
-      // Check file size (5 KB)
-      if (file.size <= 5 * 1024) {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-          setAvatarPreview(reader.result);
-        };
-      } else {
-        alert('Avatar image size should be less than 1MB');
+  const handleAvatarChange = (input) => {
+    if (typeof input === "object") {
+      const file = input.currentTarget.files[0];
+      if (file) {
+        if (file.size <= 5 * 1024) {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onloadend = () => {
+            setAvatarPreview(reader.result);
+          };
+        } else {
+          alert("Avatar image size should be less than 5KB");
+        }
       }
+    } else if(typeof input === "string") {
+        setAvatarPreview(input);
     }
   };
 
@@ -54,7 +69,7 @@ const RegisterFormik = () => {
         </Link>
       </nav>
       <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={userSchema} >
-        <Form className="register-form">
+        {({ values })=>(<Form className="register-form">
           <h1 className="login-register-title">Create an account</h1>
 
           <div className="login-register-input">
@@ -89,13 +104,29 @@ const RegisterFormik = () => {
           </div>
 
           <div className="login-register-input">
+            <div className="toggle-with-file">
+              <label>
+                <input type="checkbox" checked={withFile} 
+                  onChange={(e) => setWithFile(e.target.checked)} />
+                  Upload Avatar with File </label>
+            </div>
               <label htmlFor="avatar">Avatar</label>
-              <input type="file" id="avatar" name="avatar" className="register-field"
-                onChange={handleAvatarChange} />
-              {avatarPreview && (
+              {withFile ? (
+              <input type="file" id="avatar" name="avatar" 
+                className="register-field" onChange={handleAvatarChange} /> ) : (
+              <Field as="select" name="avatar" className="register-field" >
+                <option value="">Select an image</option>
+                {imageOptions.map((option) => (
+                  <option key={option.value} value={option.value} 
+                    onClick={() => handleAvatarChange(option.value)} >{option.label}</option> ))}
+              </Field>)}
+              <p>The file must be in png or jpg format with a size less than 5KB.</p>
+              {(avatarPreview && withFile) && (
                 <img src={avatarPreview} alt="Avatar Preview" className="avatar-preview"  
-                  style={{ width: '30px', height: '30px', marginLeft: '35%', marginTop: '-10%' }} /> )}
-                <p>The file must be in png or jpg format with a size less than 5KB.</p>
+                  style={{ width: 'auto', height: '30px', marginLeft: '44%', marginTop: '-23%' }} /> )}
+              {(!withFile) && (
+                <img src={values.avatar} alt="Avatar Preview" className="avatar-preview"  
+                  style={{ width: 'auto', height: '30px', marginLeft: '47%', marginTop: '-30%' }} /> )}
               <ErrorMessage name="avatar" component="div" className="error-message" />
             </div>
 
@@ -114,8 +145,9 @@ const RegisterFormik = () => {
               <NavLink to={"/login"}>Login now!</NavLink>
             </p>
           </div>
-        </Form>
+        </Form>)}
       </Formik>
+      
     </section>
   );
 };
