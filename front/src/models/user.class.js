@@ -8,6 +8,7 @@ export class User {
   account;
   wallet;
   currencyList;
+  lastMessage;
 
   /**
    * Create a User
@@ -30,6 +31,7 @@ export class User {
     this.account = "";
     this.wallet = null;
     this.currencyList = null;
+    this.lastMessage = "";
   }
 
   assignValues(
@@ -41,7 +43,8 @@ export class User {
     avatar,
     account,
     wallet,
-    currencyList
+    currencyList,
+    lastMessage,
   ) {
     this.id = id;
     this.firstName = firstName;
@@ -52,6 +55,7 @@ export class User {
     this.account = account;
     this.wallet = wallet;
     this.currencyList = currencyList;
+    this.lastMessage = lastMessage;
   }
 
   getId() {

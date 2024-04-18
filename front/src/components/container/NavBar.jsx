@@ -18,7 +18,7 @@ function NavBar() {
   }
 
   useEffect(() => {
-    console.log("user id: ", loggedUser.id);
+    
   }, [loggedUser.id]);
 
   function changeButtons() {

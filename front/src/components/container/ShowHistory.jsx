@@ -3,6 +3,7 @@ import PerTransaction from '../pure/perTransaction';
 import { getTransactions } from '../../services/dashboardService';
 import '../../styles/styleShowHistory.scss';
 import { UserContext } from '../../contexts/user.context';
+import Spinner from '../pure/spinner';
 
 const ShowHistory = () => {
 
@@ -31,7 +32,7 @@ const ShowHistory = () => {
   return (
     <div className="p-3">
       <h1 className="d-flex justify-content-center m-3 pt-3 history-title">Transaction History</h1>
-      <table className="table table-bordered">
+      { ListOfTransactions.length !== 0 ? <table className="table table-bordered">
         <thead>
           <tr>
             <th scope="col">Currency</th>
@@ -45,7 +46,7 @@ const ShowHistory = () => {
             <PerTransaction key={index} data={data} />
           ))}
         </tbody>
-      </table>
+      </table> : <Spinner/>}
       <nav>
         <ul className="pagination justify-content-center">
           {Array.from({ length: Math.ceil(ListOfTransactions.length / itemsPerPage) }, (_, i) => (

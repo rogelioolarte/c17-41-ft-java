@@ -1,9 +1,9 @@
 import WalletSection from "../components/container/walletSection";
-import "../styles/walletPage.scss";
+import "../styles/styleWallet.scss";
 
 function WalletPage() {
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-center wallet-page">
       <WalletSection />
     </div>
   );

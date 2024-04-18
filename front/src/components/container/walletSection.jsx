@@ -6,6 +6,7 @@ import {
   obtainProduct,
 } from "../../services/dashboardService";
 import { UserContext } from "../../contexts/user.context";
+import Spinner from "../pure/spinner";
 
 function WalletSection() {
   const { loggedUser } = useContext(UserContext);
@@ -26,18 +27,18 @@ function WalletSection() {
   }, [loggedUser]);
 
   return (
-    <div className="col-9 wallet-init wallet-area">
+    <div className="col-9 wallet-init">
       <h1 className="d-flex justify-content-center wallet-title">
         CryptoCurrency Assets
       </h1>
-      <table className="table table-borderless align-middle ">
+      { listOfTransactions.length !== 0 ? <table className="table table-borderless align-middle">
         <thead>
           <tr>
             <th scope="col">Symbol</th>
             <th scope="col">Name</th>
             <th scope="col">Per Currency in USD</th>
-            <th scope="col">Balance</th>
-            <th scope="col">In USD</th>
+            <th scope="col">Balance (Crypto)</th>
+            <th scope="col">Balance in USD</th>
           </tr>
         </thead>
         <tbody>
@@ -53,7 +54,7 @@ function WalletSection() {
             );
           })}
         </tbody>
-      </table>
+      </table> : <Spinner/>}
     </div>
   );
 }

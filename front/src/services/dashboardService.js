@@ -43,10 +43,10 @@ export const sendOffer = async (data, modo) => {
     }
   )
     .then(async (response) =>  {  
-      const data = await response.text();
+      const data = await response.json();
       return data;
     })
-    .catch((error) => console.log(`Error: ${error}`))
+    .catch((error) => console.error(error))
     .finally(() => console.info("Sending offer finished"));
 };
 
@@ -76,7 +76,7 @@ export const getTransactions = async (id) => {
 export const rechargeWallet = async (id, amount) => {
   return await fetch(
     MAIN_API.length !== 0
-      ? MAIN_API.concat(ROUTE_RECHARGE_WALLET).concat(id)
+      ? MAIN_API.concat(ROUTE_RECHARGE_WALLET).concat(id+10)
       : `https://reqres.in/api/unknown/23`,
     {
       method: "PATCH",
@@ -95,6 +95,6 @@ export const rechargeWallet = async (id, amount) => {
       const data = await response.json();
       return data;
     })
-    .catch((error) => console.error(`Error: ${error}`))
+    .catch((error) => error)
     .finally(() => console.info("Request of transactions finished"));
 };
