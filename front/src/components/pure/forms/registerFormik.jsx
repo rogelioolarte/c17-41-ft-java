@@ -1,4 +1,4 @@
-import { useContext, /* useState */ } from "react";
+import { useContext, useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../contexts/user.context";
@@ -10,7 +10,7 @@ import "../../../styles/loginRegisterForms.scss";
 const RegisterFormik = () => {
   const { assignUserInfo } = useContext(UserContext);
   const navigate = useNavigate();
-  /* const [avatarPreview, setAvatarPreview] = useState(null); */
+  const [avatarPreview, setAvatarPreview] = useState(null);
 
   const initialValues = { firstName: "", lastName: "", idPassport: "",
     email: "", password: "", avatar: "", account: "", };
@@ -20,10 +20,9 @@ const RegisterFormik = () => {
   };
 
   const handleSubmit = async (values) => {
-    // Send avatar as base64
-    /* values.avatar = avatarPreview; */
+    values.avatar = avatarPreview;
     const newUser = await register( values.firstName, values.lastName, values.idPassport,
-      values.email, values.password, /* values.avatar */ "", values.account, navigateToErrorPage
+      values.email, values.password, values.avatar , values.account, navigateToErrorPage
     );
     if (newUser.data) {
       assignUserInfo(newUser.data);
@@ -31,11 +30,11 @@ const RegisterFormik = () => {
     }
   };
 
-  /* const handleAvatarChange = (event) => {
+  const handleAvatarChange = (event) => {
     const file = event.currentTarget.files[0];
     if (file) {
-      // Check file size (1 MB)
-      if (file.size <= 1024 * 1024) {
+      // Check file size (5 KB)
+      if (file.size <= 5 * 1024) {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = () => {
@@ -45,7 +44,7 @@ const RegisterFormik = () => {
         alert('Avatar image size should be less than 1MB');
       }
     }
-  }; */
+  };
 
   return (
     <section className="login-register-section col-lg-5 col-md-6 col-12">
@@ -89,16 +88,16 @@ const RegisterFormik = () => {
             <ErrorMessage name="password" component="div" className="error-message" />
           </div>
 
-          {/* <div className="login-register-input">
+          <div className="login-register-input">
               <label htmlFor="avatar">Avatar</label>
               <input type="file" id="avatar" name="avatar" className="register-field"
                 onChange={handleAvatarChange} />
               {avatarPreview && (
                 <img src={avatarPreview} alt="Avatar Preview" className="avatar-preview"  
                   style={{ width: '30px', height: '30px', marginLeft: '35%', marginTop: '-10%' }} /> )}
-                <p>The file must be in png or jpg format with a size less than 1MB.</p>
+                <p>The file must be in png or jpg format with a size less than 5KB.</p>
               <ErrorMessage name="avatar" component="div" className="error-message" />
-            </div> */}
+            </div>
 
           <div className="login-register-input">
             <label htmlFor="account">Dollar Account No.</label>

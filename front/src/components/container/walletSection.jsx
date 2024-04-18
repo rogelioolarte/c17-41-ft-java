@@ -61,8 +61,7 @@ function WalletSection() {
                   key={index}
                   asset={data}
                   totalQuantity={listOfTransactions.filter(
-                    (value) => value.currency === data.productName
-                  )}
+                    (value) => value.currency === data.productName )}
                 />
               );
             })}
