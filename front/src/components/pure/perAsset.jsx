@@ -8,11 +8,10 @@ function PerAsset({ asset, totalQuantity }) {
         <td>{ asset.productName }</td>
         <td>{ asset.currentPrice }</td>
         <td>{ totalQuantity
-          .reduce((total, transaction) => total + transaction.quantity, 0) 
-            / asset.currentPrice }
-        </td>
-        <td>{ totalQuantity
           .reduce((total, transaction) => total + transaction.quantity, 0) }
+        </td>
+        <td>{ (totalQuantity
+          .reduce((total, transaction) => total + transaction.quantity, 0) * asset.currentPrice).toFixed(2) }
         </td>
     </tr>
   )

@@ -42,11 +42,11 @@ export const sendOffer = async (data, modo) => {
       body: JSON.stringify(data),
     }
   )
-    .then(async (response) => {
+    .then(async (response) =>  {  
       const data = await response.json();
       return data;
     })
-    .catch((error) => console.log(`Error: ${error}`))
+    .catch((error) => console.error(error))
     .finally(() => console.info("Sending offer finished"));
 };
 
@@ -95,6 +95,6 @@ export const rechargeWallet = async (id, amount) => {
       const data = await response.json();
       return data;
     })
-    .catch((error) => console.error(`Error: ${error}`))
+    .catch((error) => error)
     .finally(() => console.info("Request of transactions finished"));
 };

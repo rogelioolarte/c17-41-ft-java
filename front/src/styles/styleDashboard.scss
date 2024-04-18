@@ -58,7 +58,6 @@
     align-items: center;
     font-weight: 300;
     font-size: 300%;
-    text-decoration: underline;
 }
 .title-form-init {
     font-weight: 300;
@@ -97,4 +96,15 @@
 }
 .create-offer {
     width: 50%;
+}
+
+.spinner-init {
+    height: 10rem;
+    width: 10rem;
+}
+.spinner-area {
+    margin-top: 10%;
+}
+.form-recharge { 
+    margin-top: 5%;
 }

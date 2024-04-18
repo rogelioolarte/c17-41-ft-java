@@ -1,1 +1,1 @@
-export const TOKEN_GET = sessionStorage.getItem('token')
+export const TOKEN_GET = localStorage.getItem('user')
