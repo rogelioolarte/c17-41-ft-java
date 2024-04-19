@@ -3,6 +3,7 @@ import "../../styles/styleNavbar.scss";
 import Logo from "../../assets/payzo.svg";
 import Wallet from "../../assets/wallet.svg";
 import Dashboard from "../../assets/dashboard.svg";
+import Person from "../../assets/person.svg";
 import Config from "../../assets/configuration.svg";
 import Logout from "../../assets/logout.svg";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -26,8 +27,13 @@ function NavBar() {
           <NavLink to="/wallet" replace={true}>
             <img className="logo-nav" src={Wallet} alt="Wallet" />
           </NavLink>
-          <NavLink to="/dashboard" replace={true}>
-            <img className="logo-nav" src={Dashboard} alt="Dashboard" />
+          <NavLink to="/dashboard" replace={true} className="navlink-with-avatar">
+            <img className="logo-nav nav-dash" src={Dashboard} alt="Dashboard" />
+            {loggedUser.avatar ? (
+              <img className="logo-nav nav-img" src={`${loggedUser.avatar}`} alt="Avatar" />
+            ) : (
+              <img className="logo-nav nav-img" src={Person} alt="Dashboard" />
+            )}
           </NavLink>
           <NavLink to="/config" replace={true}>
             <img className="logo-nav" src={Config} alt="Config" />
@@ -39,7 +45,7 @@ function NavBar() {
       );
     } else {
       return (
-        <div className="button-init">
+        <div className="button-init-home">
           <NavLink to="/login" replace={true}>
             <button
               type="button"

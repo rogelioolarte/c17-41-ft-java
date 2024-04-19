@@ -27,17 +27,19 @@ const userSchema = Yup.object().shape({
       }
     )
     .required('Please enter a password'),
-  /* avatar: Yup.mixed()
+  avatar: Yup.mixed()
     .test('fileSize', 'File size too large', (value) => {
       if (!value) return true;
-      return value.size <= 1024 * 1024; // Máximo 1MB
+      if(typeof value === "string") return true;
+      return value.size <= 5 * 1024; // Máximo 5KB
     })
     .test('fileFormat', 'Invalid file format', (value) => {
       if (!value) return true;
+      if(typeof value === "string") return true;
       return (
-        value.type === 'image/png' || value.type === 'image/jpeg'
+        value.type === 'image/png' || value.type === 'image/jpeg' || value.type === 'image/jpg'
       ); 
-    }), */
+    }),
   account: Yup.string().required('Please enter your account number'),
 });
 
