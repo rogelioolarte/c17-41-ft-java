@@ -17,9 +17,7 @@ function NavBar() {
     navigate("/");
   }
 
-  useEffect(() => {
-    
-  }, [loggedUser.id]);
+  useEffect(() => {}, [loggedUser.id]);
 
   function changeButtons() {
     if (loggedUser.id) {

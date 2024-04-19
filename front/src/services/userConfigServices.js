@@ -1,4 +1,5 @@
 import axios from "axios";
+import { MAIN_API } from "../config/api_routes";
 
 const updateUserInfo = async (
   id,
@@ -12,14 +13,14 @@ const updateUserInfo = async (
   navigateToErrorPage
 ) => {
   try {
-    const updatedUser = axios.put(`https://localhost:8080/api/user/${id}`, {
+    const updatedUser = axios.put(MAIN_API.concat(`/api/user/register/${id}`), {
       firstName: firstName,
       lastName: lastName,
-      idPassport: idPassport,
+      dni: idPassport,
       email: email,
       password: password,
       avatar: avatar,
-      account: account,
+      cbuDollar: account,
     });
     return updatedUser;
   } catch (error) {

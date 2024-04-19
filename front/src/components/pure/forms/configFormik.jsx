@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import userSchema from "../../../models/user.schema";
+import configSchema from "../../../models/config.schema";
 import { UserContext } from "../../../contexts/user.context";
 import { updateUserInfo } from "../../../services/userConfigServices";
 import "../../../styles/userConfigStyles.scss";
@@ -39,7 +39,7 @@ function ConfigFormik() {
     );
     if (updatedUser) {
       assignUserInfo(updatedUser);
-      navigate("/config");
+      window.location.reload();
     }
   };
 
@@ -53,7 +53,7 @@ function ConfigFormik() {
           <Formik
             initialValues={initialValues}
             onSubmit={handleSubmit}
-            validationSchema={userSchema}
+            validationSchema={configSchema}
           >
             <Form>
               <div className="config-form">

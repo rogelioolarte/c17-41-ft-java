@@ -5,12 +5,17 @@ import PropTypes from "prop-types";
 const UserContext = createContext();
 
 function UserProvider(props) {
-  const savedUser = new User(JSON.parse(localStorage.getItem("user")));
+  const savedUserData = window.localStorage.getItem("user");
+  const savedUser = savedUserData
+    ? new User(JSON.parse(window.localStorage.getItem("user")))
+    : new User();
 
   const [loggedUser, setLoggedUser] = useState(savedUser || new User());
 
+  console.log(loggedUser);
+
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(loggedUser));
+    window.localStorage.setItem("user", JSON.stringify(loggedUser));
   }, [loggedUser]);
 
   const assignUserInfo = (user) => {
@@ -23,11 +28,12 @@ function UserProvider(props) {
   };
 
   const logUserOut = () => {
+    window.localStorage.removeItem("user");
     setLoggedUser(new User());
   };
 
   return (
-    <UserContext.Provider value={{ loggedUser, assignUserInfo, logUserOut, }}>
+    <UserContext.Provider value={{ loggedUser, assignUserInfo, logUserOut }}>
       {props.children}
     </UserContext.Provider>
   );
