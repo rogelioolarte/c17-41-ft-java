@@ -12,8 +12,6 @@ function UserProvider(props) {
 
   const [loggedUser, setLoggedUser] = useState(savedUser || new User());
 
-  console.log(loggedUser);
-
   useEffect(() => {
     window.localStorage.setItem("user", JSON.stringify(loggedUser));
   }, [loggedUser]);

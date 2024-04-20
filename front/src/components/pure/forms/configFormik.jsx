@@ -25,21 +25,21 @@ function ConfigFormik() {
     navigate(`/error?message=${encodeURIComponent(error)}`);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (values) => {
     const updatedUser = await updateUserInfo(
       loggedUser.id,
-      loggedUser.firstName,
-      loggedUser.lastName,
-      loggedUser.idPassport,
-      loggedUser.email,
-      loggedUser.password,
-      loggedUser.avatar,
-      loggedUser.account,
+      values.firstName,
+      values.lastName,
+      values.idPassport,
+      values.email,
+      values.password,
+      values.avatar,
+      values.account,
       navigateToErrorPage
     );
     if (updatedUser) {
       assignUserInfo(updatedUser);
-      window.location.reload();
+      // window.location.reload();
     }
   };
 
