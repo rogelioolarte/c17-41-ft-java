@@ -39,7 +39,7 @@ function ConfigFormik() {
     );
     if (updatedUser) {
       assignUserInfo(updatedUser);
-      // window.location.reload();
+      window.location.reload();
     }
   };
 
