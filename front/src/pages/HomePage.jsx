@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import "../styles/styleHome.scss";
+import useProtectedRoute from "../hooks/useProtectedRoute";
+
 const HomePage = () => {
+  useProtectedRoute();
   return (
     <div className="home">
       <h1 className="home-title">Trade Bitcoin with PAYZO</h1>

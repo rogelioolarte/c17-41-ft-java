@@ -91,8 +91,8 @@ function RechargeDollars() {
         )}
       </Formik>
       <p className="note-init">
-        Note: Every amount that you recharge will be send to your personal
-        account of your bank.
+        Note: Every amount that you recharge will be sent to your personal bank
+        account.
       </p>
     </div>
   );
