@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "../styles/styleHome.scss";
-import useProtectedRoute from "../hooks/useProtectedRoute";
 
 const HomePage = () => {
   return (
