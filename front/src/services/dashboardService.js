@@ -26,8 +26,7 @@ export const obtainProduct = async () => {
       }
       return response.json();
     })
-    .catch((error) => console.error(`Error: ${error}`))
-    .finally(() => console.info("Request of products finished"));
+    .catch((error) => console.error(`Error: ${error}`));
 };
 
 export const sendOffer = async (data, modo) => {
@@ -43,8 +42,11 @@ export const sendOffer = async (data, modo) => {
       body: JSON.stringify(data),
     }
   )
-    .then((response) => { response })
-    .catch((error) => console.log(`Error: ${error}`))
+    .then(async (response) =>  {  
+      const data = await response.json();
+      return data;
+    })
+    .catch((error) => console.error(error))
     .finally(() => console.info("Sending offer finished"));
 };
 
@@ -93,6 +95,6 @@ export const rechargeWallet = async (id, amount) => {
       const data = await response.json();
       return data;
     })
-    .catch((error) => console.error(`Error: ${error}`))
+    .catch((error) => error)
     .finally(() => console.info("Request of transactions finished"));
 };

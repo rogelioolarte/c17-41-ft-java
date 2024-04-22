@@ -8,6 +8,7 @@ export class User {
   account;
   wallet;
   currencyList;
+  lastMessage;
 
   /**
    * Create a User
@@ -20,38 +21,17 @@ export class User {
    * @param {*} account Amount of currency in the account
    */
 
-  constructor() {
-    this.id = "";
-    this.firstName = "";
-    this.lastName = "";
-    this.idPassport = "";
-    this.email = "";
-    this.avatar = "";
-    this.account = "";
-    this.wallet = null;
-    this.currencyList = null;
-  }
-
-  assignValues(
-    id,
-    firstName,
-    lastName,
-    idPassport,
-    email,
-    avatar,
-    account,
-    wallet,
-    currencyList
-  ) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.idPassport = idPassport;
-    this.email = email;
-    this.avatar = avatar;
-    this.account = account;
-    this.wallet = wallet;
-    this.currencyList = currencyList;
+  constructor(user = {}) {
+    this.id = user.id || "";
+    this.firstName = user.firstName || "";
+    this.lastName = user.lastName || "";
+    this.idPassport = user.idPassport || "";
+    this.email = user.email || "";
+    this.avatar = user.avatar || "";
+    this.account = user.account || "";
+    this.wallet = user.wallet || null;
+    this.currencyList = user.currencyList || null;
+    this.lastMessage = user.lastMessage || "";
   }
 
   getId() {

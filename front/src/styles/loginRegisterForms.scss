@@ -18,7 +18,8 @@
     .login-register-title {
         font-size: 2.5rem;
         margin-bottom: 1rem;
-        font-weight: 900;   
+        font-weight: 900; 
+        margin-top: 0%;
     }
 
     .big-label {
@@ -136,4 +137,8 @@
 }
 .register-page {
     height: 85vh;
+}
+.linea-register {
+    margin-top: -5%;
+    margin-bottom: 0;
 }

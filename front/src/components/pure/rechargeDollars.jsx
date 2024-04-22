@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import useToggle from "../../hooks/useToggle";
 import { UserContext } from "../../contexts/user.context";
 import { rechargeWallet } from "../../services/dashboardService";
 import "../../styles/styleDashboard.scss";
@@ -18,25 +17,36 @@ const initialValues = { amountToRecharge: 0 };
 
 function RechargeDollars() {
   const { loggedUser, assignUserInfo } = useContext(UserContext);
-  const [newRecharge, toggleNewRecharge] = useToggle(false);
+
+  const managedOfferResponse = (wallet, currencyList, message) => {
+    assignUserInfo({
+      ...loggedUser,
+      wallet,
+      currencyList,
+      lastMessage: message,
+    });
+  };
 
   // Function to handle form submission
   const handleSubmit = async (values, { setSubmitting }) => {
-    let newData = await rechargeWallet(loggedUser.id, values.amountToRecharge);
-    const user = {
-      id: loggedUser.id,
-      firstName: loggedUser.firstName,
-      lastName: loggedUser.lastName,
-      idPassport: loggedUser.idPassport,
-      email: loggedUser.email,
-      avatar: loggedUser.avatar,
-      account: loggedUser.account,
-      wallet: newData.wallet,
-      currencyList: loggedUser.currencyList,
-    };
-    assignUserInfo(user);
+    const newData = await rechargeWallet(
+      loggedUser.id,
+      values.amountToRecharge
+    );
+    if (newData.wallet > 0) {
+      managedOfferResponse(
+        newData.wallet,
+        loggedUser.currencyList,
+        `The wallet recharge has been successful.`
+      );
+    } else {
+      managedOfferResponse(
+        loggedUser.wallet,
+        loggedUser.currencyList,
+        `An error occurred while reloading the wallet. No change was made.`
+      );
+    }
     setSubmitting(false);
-    toggleNewRecharge();
   };
 
   useEffect(() => {}, [loggedUser]);
@@ -50,7 +60,7 @@ function RechargeDollars() {
         onSubmit={handleSubmit}
       >
         {() => (
-          <Form className="forms-area-init">
+          <Form className="forms-area-init form-recharge">
             <h1 className="title-form-init">Enter the amount to recharge</h1>
             <div className="mb-1">
               <label
@@ -77,14 +87,12 @@ function RechargeDollars() {
             >
               Recharge
             </button>
-            {newRecharge ? (
-              <div className="note-init-form">Now, You have {loggedUser.wallet} USD in your personal wallet</div> ) : ("")}
           </Form>
         )}
       </Formik>
       <p className="note-init">
-        Note: Every amount that you recharge will be send to your personal
-        account of your bank.
+        Note: Every amount that you recharge will be sent to your personal bank
+        account.
       </p>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import userSchema from "../../../models/user.schema";
+import configSchema from "../../../models/config.schema";
 import { UserContext } from "../../../contexts/user.context";
 import { updateUserInfo } from "../../../services/userConfigServices";
 import "../../../styles/userConfigStyles.scss";
@@ -25,21 +25,21 @@ function ConfigFormik() {
     navigate(`/error?message=${encodeURIComponent(error)}`);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (values) => {
     const updatedUser = await updateUserInfo(
       loggedUser.id,
-      loggedUser.firstName,
-      loggedUser.lastName,
-      loggedUser.idPassport,
-      loggedUser.email,
-      loggedUser.password,
-      loggedUser.avatar,
-      loggedUser.account,
+      values.firstName,
+      values.lastName,
+      values.idPassport,
+      values.email,
+      values.password,
+      values.avatar,
+      values.account,
       navigateToErrorPage
     );
     if (updatedUser) {
       assignUserInfo(updatedUser);
-      navigate("/config");
+      window.location.reload();
     }
   };
 
@@ -53,7 +53,7 @@ function ConfigFormik() {
           <Formik
             initialValues={initialValues}
             onSubmit={handleSubmit}
-            validationSchema={userSchema}
+            validationSchema={configSchema}
           >
             <Form>
               <div className="config-form">

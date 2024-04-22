@@ -1,10 +1,13 @@
-// import WalletSection from "../components/pure/walletSection";
 import WalletSection from "../components/container/walletSection";
-import "../styles/walletPage.scss";
+import useProtectedRoute from "../hooks/useProtectedRoute";
+import "../styles/styleWallet.scss";
 
 function WalletPage() {
+  useProtectedRoute();
   return (
-    <div className="d-flex justify-content-center"><WalletSection/></div>
+    <div className="d-flex justify-content-center wallet-page">
+      <WalletSection />
+    </div>
   );
 }
 

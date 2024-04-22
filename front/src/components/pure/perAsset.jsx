@@ -1,18 +1,39 @@
 import PropTypes from 'prop-types'
 import '../../styles/styleWallet.scss'
+import { useEffect, useState } from 'react'
 
 function PerAsset({ asset, totalQuantity }) {
+
+  const [transactionsBuy, setBuy] = useState([]);
+  const [transactionsSell, setSell] = useState([]);
+
+  const typeOfTransactions = (list, type) => {
+    return list !== 0 ? list.filter(value => value.type === type) : 0
+  }
+
+  useEffect(() => {
+    setBuy(typeOfTransactions(totalQuantity, 'buy'))
+    setSell(typeOfTransactions(totalQuantity, 'sell'))
+  } ,[ totalQuantity ])
+
+  
+
   return (
     <tr>
         <td>{ asset.symbol }</td>
         <td>{ asset.productName }</td>
         <td>{ asset.currentPrice }</td>
-        <td>{ totalQuantity
-          .reduce((total, transaction) => total + transaction.quantity, 0) 
-            / asset.currentPrice }
+        <td>{ totalQuantity !== 0 ? transactionsBuy
+                  .reduce((total, transaction) => total + transaction.quantity, 0) - 
+                transactionsSell
+                  .reduce((total, transaction) => total + transaction.quantity, 0) : 0 } {asset.symbol}
         </td>
-        <td>{ totalQuantity
-          .reduce((total, transaction) => total + transaction.quantity, 0) }
+        <td>{ ((totalQuantity !== 0 ? transactionsBuy
+                  .reduce((total, transaction) => total + transaction.quantity, 0) - 
+                transactionsSell
+                  .reduce((total, transaction) => total + transaction.quantity, 0) : 0 ) 
+                * asset.currentPrice
+              ).toFixed(2) } USD
         </td>
     </tr>
   )
