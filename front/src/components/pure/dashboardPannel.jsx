@@ -8,17 +8,17 @@ const DashboardPannel = () => {
         <button
           type="button"
           className="btn btn-light  btn-outline-dark btn-lg dashboard-button-init ">
-          Create an offer to buy crypto
+          Buy or Sell Crypto
         </button>
       </Link>
       <Link to="/dashboard/history">
         <button type="button" className="btn btn-light btn-outline-dark btn-lg dashboard-button-init">
-          Show history of transactions
+          Show Transactions
         </button>
       </Link>
       <Link to="/dashboard/recharge">
         <button type="button" className="btn btn-light btn-outline-dark btn-lg dashboard-button-init">
-          Recharge your account in dollars
+          Recharge your Wallet
         </button>
       </Link>
     </div>
