@@ -6,6 +6,11 @@
 
 ## Sobre Payzo
 Payzo es un proyecto sobre gestión financiera para facilitar las transacciones entre personas, brindamos un servicio dónde el usuario podrá adquirir y vender de forma segura sus divisas y transferirlas a amigos, familiares y comerciantes, entre otras cosas.
+
+
+<h2 align="center"><a href="https://www.youtube.com/embed/rzMYfGWEX2w?si=sThZM2I8_NVb2Md0">Demostración   <br> <img src="https://github.com/LionelStaricoff/conversor/blob/main/youtube.png?raw=true"  alt="enlace al juego" width="100" height="100"> </a></h2>
+
+
 ## ¿Que ofrecemos?
 - Almacenar pesos y dólares
 - Comprar y cambiar divisas
@@ -29,6 +34,7 @@ Utilizamos las siguientes tecnologias para realizar el desarrollo.
    <img src=https://user-images.githubusercontent.com/25181517/183896128-ec99105a-ec1a-4d85-b08b-1aa1620b2046.png width="50" height="50">
    <img src=https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png width="50" height="50">
    <img src=https://user-images.githubusercontent.com/25181517/192107858-fe19f043-c502-4009-8c47-476fc89718ad.png width="50" height="50">
+  <br><br>  <strong>QA</strong>: <br><br>
    <img src=https://raw.githubusercontent.com/No-Country/c17-41-ft-java/main/selenium.jpg width="50" height="50">
  
  </div>
