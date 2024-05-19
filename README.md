@@ -5,7 +5,10 @@
 </p>
 
 ## Sobre Payzo
-Payzo es un proyecto sobre gestión financiera para facilitar las transacciones entre personas, brindamos un servicio dónde el usuario podrá adquirir y vender de forma segura sus divisas y transferirlas a amigos, familiares y comerciantes, entre otras cosas.
+Payzo es una aplicación completa que permite comprar y vender criptomonedas con precios en tiempo real, a su vez proporciona un servicio dado que no se aplican comisiones y las transacciones se realizan directamente sin intermediarios o tiempos de espera adicionales.
+
+## About
+Payzo is a complete application that allows you to buy and sell cryptocurrencies with real-time prices, at the same time providing a service since no commissions are applied and transactions are carried out directly without intermediaries or additional waiting times.
 
 <br>
 <h2 align="center"><a href="https://youtu.be/rzMYfGWEX2w?si=tZpMOQKvMBEQqO-T">Demostración<br></a></h2>
@@ -15,12 +18,11 @@ https://github.com/rogelioolarte/c17-41-ft-java/assets/16294803/f77caf7c-9016-4b
 
 
 ## ¿Que ofrecemos?
-- Almacenar pesos y dólares
-- Comprar y cambiar divisas
-- Invertir tu plata en acciones o criptomonedas
-- Transferir divisas
+- Almacenar dólares y criptomonedas
+- Comprar o vender criptomonedas y divisas
 - Visualizar movimientos
 - Alertas de seguridad
+  
 ## ¿Como hacemos esto posible?
 Utilizamos las siguientes tecnologias para realizar el desarrollo.
 <div>
